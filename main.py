@@ -1,6 +1,7 @@
 import numpy as np
 import math
 import matplotlib.pyplot as plt
+import mplcursors
 import sys
 import conf
 
@@ -124,7 +125,13 @@ ax.plot([traj[0][0]], [traj[0][1]], '^g')
 
 #######################
 
+fig.canvas.manager.set_window_title('VLATI')
+
 plt.grid(True)
-plt.plot(traj[:,0], traj[:,1], 'm-')
+line_traj = plt.plot(traj[:,0], traj[:,1], 'm-')
 plt.plot(moon_traj_debug[:,0], moon_traj_debug[:,1], 'g-')
+
+crsr = mplcursors.cursor(line_traj)
+crsr.connect("add", lambda sel: sel.annotation.set_text("t = " + str(sel.index) * dt))
+
 plt.show()
