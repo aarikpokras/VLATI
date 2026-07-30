@@ -1,5 +1,5 @@
 # VLATI
-Verlet Leapfrog Astronomical Trajectory Integrator (2D)
+Verlet Leapfrog Astrodynamic Trajectory Integrator (2D)
 
 <p align="center">
   <img src="https://cdn.jsdelivr.net/gh/aarikpokras/vlati@715a910/images/vlati-out.png" width="700" />
