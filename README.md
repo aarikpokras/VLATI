@@ -11,6 +11,12 @@ Uses a Velocity Verlet integrator, along with the law of universal gravitation a
 In order to use VLATI, you need the following Python packages (each is installable via `pip`):
 * matplotlib
 * numpy
+* mplcursors
+
+They can be installed through the following command:
+```console
+pip install matplotlib numpy mplcursors
+```
 
 ## Configuration
 A configuration file named conf.py is required in the same directory in which VLATI is run. It must contain a dictionary with the same name.
