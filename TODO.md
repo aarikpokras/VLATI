@@ -9,3 +9,4 @@
 - [ ] True inertial frame
 - [ ] RK4? Then we could call it "very laggy" instead of "Verlet leapfrog"
 - [ ] Continuous finite burns
+- [ ] `t` single calculation move directly after `_iter` change
