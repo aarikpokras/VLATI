@@ -3,7 +3,8 @@
 - [x] Config file
   - [ ] Instead - split sections of code into files, specify what users do in each?
 - [ ] Sun motion
-- [ ] More accurate ephemerides
 - [ ] Patching of burns (allowing burns @ certain times)
+  - [ ] Time tooltips for reference
+- [ ] More accurate ephemerides
 - [ ] True inertial frame
 - [ ] RK4?
