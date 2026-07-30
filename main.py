@@ -132,6 +132,6 @@ line_traj = plt.plot(traj[:,0], traj[:,1], 'm-')
 plt.plot(moon_traj_debug[:,0], moon_traj_debug[:,1], 'g-')
 
 crsr = mplcursors.cursor(line_traj)
-crsr.connect("add", lambda sel: sel.annotation.set_text("t = " + str(sel.index) * dt))
+crsr.connect("add", lambda sel: sel.annotation.set_text("t = " + str(int(sel.index)) * dt))
 
 plt.show()
