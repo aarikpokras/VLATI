@@ -3,6 +3,7 @@
 - [ ] Sun motion
 - [ ] Patching of burns (allowing burns @ certain times)
   - [x] Time tooltips for reference
+  - [x] Single burn
 - [ ] More accurate ephemerides
 - [x] Config file
   - [ ] Move NumPy conversions into main.py
