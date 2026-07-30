@@ -5,6 +5,8 @@ import mplcursors
 import sys
 import conf
 
+burn_executed = False
+
 # How many iterations of the
 # simulator are to be run.
 # The higher the value, the
@@ -73,6 +75,8 @@ a = acceleration_vec(r_sc) # Pre-compute accel vector
 
 moon_traj_debug = []
 
+t = 0
+
 while _iter < until:
 
   r_sc += v*dt + 0.5*a*(dt**2)  # Compute new position based on accel
@@ -80,15 +84,26 @@ while _iter < until:
   ### COMPUTE NEW POS OF PLANETS ###
   _iter += 1
 
-  r_moon = r_moon_vec(_iter * dt)
+  r_moon = r_moon_vec(t)
   bds[1] = (r_moon, m_moon)
 
   ##################################
+
+  t = _iter * dt
 
   a_new = acceleration_vec(r_sc)
 
   v += 0.5 * (a + a_new) * dt   # New vel for next loop, avg of a and a_new
                                 # vel production
+
+  if (t >= conf.conf["seconds_burn_time_elapsed"]):
+    if (not burn_executed and conf.conf["bool_burn"]):
+      v += conf.conf["meters_per_second_delta_v_burn"]
+      burn_executed = True
+      print("----")
+      print("T +" + str(t) + "s Burn executed " + str(conf.conf["meters_per_second_delta_v_burn"]))
+      print("----")
+
   if (_iter % modulo == 0):
     print("r_sc        = " + str(r_sc))
     print("|r_scearth| = " + str(np.linalg.norm(r_earth - r_sc)))
