@@ -1,0 +1,9 @@
+- [x] Programmatically add bodies
+- [x] Planetary motion defined by user-provided functions
+- [x] Config file
+  - [ ] Instead - split sections of code into files, specify what users do in each?
+- [ ] Sun motion
+- [ ] More accurate ephemerides
+- [ ] Patching of burns (allowing burns @ certain times)
+- [ ] True inertial frame
+- [ ] RK4?
