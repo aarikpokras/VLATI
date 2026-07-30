@@ -1,7 +1,7 @@
 # VLATI
 Verlet Leapfrog Astrodynamic Trajectory Integrator (2D)
 
-You can take a look at the [wiki](https://github.com/aarikpokras/VLATI/wiki) for a more organized version of this README
+You can take a look at the [wiki](https://github.com/aarikpokras/VLATI/wiki) for a more organized version of this README.
 
 <p align="center">
   <img src="https://cdn.jsdelivr.net/gh/aarikpokras/vlati@2228111/images/vlati-out.png" width="700" />
