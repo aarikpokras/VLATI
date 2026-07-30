@@ -1,11 +1,11 @@
 - [x] Programmatically add bodies
 - [x] Planetary motion defined by user-provided functions
-- [x] Config file
-  - [ ] Instead - split sections of code into files, specify what users do in each?
 - [ ] Sun motion
 - [ ] Patching of burns (allowing burns @ certain times)
   - [x] Time tooltips for reference
 - [ ] More accurate ephemerides
+- [x] Config file
+  - [ ] Move NumPy conversions into main.py
 - [ ] True inertial frame
 - [ ] RK4? Then we could call it "very laggy" instead of "Verlet leapfrog"
 - [ ] Continuous finite burns
