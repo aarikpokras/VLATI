@@ -7,5 +7,5 @@
   - [x] Time tooltips for reference
 - [ ] More accurate ephemerides
 - [ ] True inertial frame
-- [ ] RK4?
+- [ ] RK4? Then we could call it "very laggy" instead of "Verlet leapfrog"
 - [ ] Continuous finite burns
