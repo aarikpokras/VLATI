@@ -2,7 +2,7 @@
 Verlet Leapfrog Astrodynamic Trajectory Integrator (2D)
 
 <p align="center">
-  <img src="https://cdn.jsdelivr.net/gh/aarikpokras/vlati@715a910/images/vlati-out.png" width="700" />
+  <img src="https://cdn.jsdelivr.net/gh/aarikpokras/vlati@2228111/images/vlati-out.png" width="700" />
 </p>
 
 Uses a Velocity Verlet integrator, along with the law of universal gravitation and very approximate (currently only lunar) ephemerides to find the path of a spacecraft through space given an initial state vector.
