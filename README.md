@@ -7,6 +7,11 @@ Verlet Leapfrog Astronomical Trajectory Integrator (2D)
 
 Uses a Velocity Verlet integrator, along with the law of universal gravitation and very approximate (currently only lunar) ephemerides to find the path of a spacecraft through space given an initial state vector.
 
+## Dependencies
+In order to use VLATI, you need the following Python packages (each is installable via `pip`):
+* matplotlib
+* numpy
+
 ## Configuration
 A configuration file named conf.py is required in the same directory in which VLATI is run. It must contain a dictionary with the same name.
 ```python
