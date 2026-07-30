@@ -8,3 +8,4 @@
 - [ ] More accurate ephemerides
 - [ ] True inertial frame
 - [ ] RK4?
+- [ ] Continuous finite burns
