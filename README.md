@@ -35,6 +35,9 @@ The options available are found in the conf.py file in the root directory of thi
 |`degrees_moon_start_angle_N`|degrees|Where the Moon's revolution about the Earth starts relative to absolute upwards (increases clockwise).|
 |`meters_spacecraft_start_vec`|meters|The starting location vector of the spacecraft.|
 |`meters_per_second_spacecraft_start_v_vec`|meters per second|The starting velocity vector of the spacecraft.|
+|`bool_burn`|`True`/`False`|Whether the below burn settings apply.|
+|`meters_per_second_delta_v_burn`|meters per second|The Δv vector of the burn.|
+|`seconds_burn_time_elapsed`|seconds|At what time elapsed to perform the burn|
 
 ## Add a body
 This is difficult; I recommend becoming familiar with the program's "shape" before doing this.
