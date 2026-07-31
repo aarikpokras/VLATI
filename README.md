@@ -1,7 +1,7 @@
 # VLATI
 Verlet Leapfrog Astrodynamic Trajectory Integrator (2D)
 
-You can take a look at the [wiki](https://github.com/aarikpokras/VLATI/wiki) for a more organized version of this README.
+You can take a look at the [wiki](https://github.com/aarikpokras/VLATI/wiki) for VLATI's documentation.
 
 <p align="center">
   <img src="https://cdn.jsdelivr.net/gh/aarikpokras/vlati@2228111/images/vlati-out.png" width="700" />
@@ -9,6 +9,7 @@ You can take a look at the [wiki](https://github.com/aarikpokras/VLATI/wiki) for
 
 Uses a Velocity Verlet integrator, along with the law of universal gravitation and very approximate (currently only lunar) ephemerides to find the path of a spacecraft through space given an initial state vector.
 
+<!--
 ## Dependencies
 In order to use VLATI, you need the following Python packages (each is installable via `pip`):
 * matplotlib
@@ -98,3 +99,4 @@ Next you need to add this to the integration loop.
 ```
 
 You need to rewrite the tuple in `bds`, as they are immutable.
+-->
