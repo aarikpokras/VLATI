@@ -14,6 +14,7 @@
   - [x] Time tooltips for reference
   - [x] Single burn
   - [ ] Multiple burns/programmatically adding
+    - [ ] Would need to decrease y-coord with every burn info text box
 - [ ] `t` single calculation move directly after `_iter` change
 
 ## Incomplete (No plan, distant)
