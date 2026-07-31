@@ -2,13 +2,13 @@
 
 - [x] Programmatically add bodies
 - [x] Planetary motion defined by user-provided functions
+- [x] Config file
 
 ## Incomplete
 
-- [ ] More accurate ephemerides
-- [x] Config file
-  - [ ] Move NumPy conversions into main.py
 - [ ] Sun motion
+- [ ] Move NumPy conversions into main.py
+- [ ] More accurate ephemerides (SPICE/kernel file)
 - [ ] Patching of burns (allowing burns @ certain times)
   - [x] Time tooltips for reference
   - [x] Single burn
