@@ -6,6 +6,7 @@
 
 ## Incomplete (Plan, soon to occur)
 
+- [ ] Print absolute velocity in burn info thing
 - [ ] Sun motion
 - [ ] Move NumPy conversions into main.py
 - [ ] More accurate ephemerides (SPICE/kernel file)
