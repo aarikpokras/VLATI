@@ -138,6 +138,16 @@ dotm = ax.plot([r_moon[0]], [r_moon[1]], 'ko')
 # Traj start marker
 ax.plot([traj[0][0]], [traj[0][1]], '^g')
 
+if (burn_executed):
+  ax.text(
+    0.05,
+    0.95,
+    'Burn @ T +' + str(conf.conf["seconds_burn_time_elapsed"]) + '\n' + str(conf.conf["meters_per_second_delta_v_burn"]),
+    transform = ax.transAxes,
+    fontsize = 10,
+    verticalalignment = 'top'
+  )
+
 #######################
 
 fig.canvas.manager.set_window_title('VLATI')
