@@ -1,13 +1,17 @@
 # VLATI
-Verlet Leapfrog Astrodynamic Trajectory Integrator (2D)
-
-You can take a look at the [wiki](https://github.com/aarikpokras/VLATI/wiki) for VLATI's documentation.
+Verlet Leapfrog Astrodynamic Trajectory Integrator
 
 <p align="center">
   <img src="https://cdn.jsdelivr.net/gh/aarikpokras/vlati@2228111/images/vlati-out.png" width="700" />
 </p>
 
-Uses a Velocity Verlet integrator, along with the law of universal gravitation and very approximate (currently only lunar) ephemerides to find the path of a spacecraft through space given an initial state vector.
+VLATI is a 2-dimensional simulation of a Moon-Sun-Earth system.
+
+It uses a Velocity Verlet integrator, along with the law of universal gravitation and very approximate (currently only lunar) ephemerides to find the path of a spacecraft through space given an initial state vector.
+
+There are [plans](https://github.com/aarikpokras/VLATI/blob/master/TODO.md) to increase the accuracy of the ephemerides, as they are currently only sinusoidal (circular).
+
+You can take a look at the [wiki](https://github.com/aarikpokras/VLATI/wiki) for VLATI's documentation.
 
 <!--
 ## Dependencies
