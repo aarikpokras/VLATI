@@ -1,12 +1,18 @@
+## Complete
+
 - [x] Programmatically add bodies
 - [x] Planetary motion defined by user-provided functions
+
+## Incomplete
+
+- [ ] More accurate ephemerides
+- [x] Config file
+  - [ ] Move NumPy conversions into main.py
 - [ ] Sun motion
 - [ ] Patching of burns (allowing burns @ certain times)
   - [x] Time tooltips for reference
   - [x] Single burn
-- [ ] More accurate ephemerides
-- [x] Config file
-  - [ ] Move NumPy conversions into main.py
+  - [ ] Multiple burns/programmatically adding
 - [ ] True inertial frame
 - [ ] RK4? Then we could call it "very laggy" instead of "Verlet leapfrog"
 - [ ] Continuous finite burns
