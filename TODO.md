@@ -10,6 +10,7 @@
 - [ ] Sun motion
 - [ ] Move NumPy conversions into main.py from conf.py
 - [ ] More accurate ephemerides (SPICE/kernel file)
+  - [ ] As a consequence, dates are also a part of the simulation
 - [ ] Patching of burns (allowing burns @ certain times)
   - [x] Time tooltips for reference
   - [x] Single burn
