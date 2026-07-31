@@ -100,11 +100,11 @@ while _iter < until:
     if (not burn_executed and conf.conf["bool_burn"]):
       v += conf.conf["meters_per_second_delta_v_burn"]
       burn_executed = True
-      print("----")
+      print("\n++++++++++++++++++++++++++++++++++\n")
       print("T +" + str(t) + "s Burn executed " + str(conf.conf["meters_per_second_delta_v_burn"]))
-      print("----")
 
   if (_iter % modulo == 0):
+    print("\n===============================================\n")
     print("r_sc        = " + str(r_sc))
     print("|r_scearth| = " + str(np.linalg.norm(r_earth - r_sc)))
     print("Iter " + str(_iter) + "/" + str(until) + " (" + str(_iter*100/until) + ")%")
