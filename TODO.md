@@ -4,7 +4,7 @@
 - [x] Planetary motion defined by user-provided functions
 - [x] Config file
 
-## Incomplete
+## Incomplete (Plan, soon to occur)
 
 - [ ] Sun motion
 - [ ] Move NumPy conversions into main.py
@@ -13,7 +13,10 @@
   - [x] Time tooltips for reference
   - [x] Single burn
   - [ ] Multiple burns/programmatically adding
+- [ ] `t` single calculation move directly after `_iter` change
+
+## Incomplete (No plan, distant)
+
 - [ ] True inertial frame
 - [ ] RK4? Then we could call it "very laggy" instead of "Verlet leapfrog"
 - [ ] Continuous finite burns
-- [ ] `t` single calculation move directly after `_iter` change
