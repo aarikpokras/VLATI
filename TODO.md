@@ -6,9 +6,9 @@
 
 ## Incomplete (Plan, soon to occur)
 
-- [ ] Print absolute velocity in burn info thing in MPL
+- [ ] Print post (pre too?) absolute velocity in burn info thing in MPL
 - [ ] Sun motion
-- [ ] Move NumPy conversions into main.py
+- [ ] Move NumPy conversions into main.py from conf.py
 - [ ] More accurate ephemerides (SPICE/kernel file)
 - [ ] Patching of burns (allowing burns @ certain times)
   - [x] Time tooltips for reference
