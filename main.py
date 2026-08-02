@@ -29,15 +29,24 @@ r_sun = np.array([149599999999.7966, 0.0])
 #r_sc = np.array([6537000.0, 0.0]) # LEO
 r_sc = conf.conf["meters_spacecraft_start_vec"]
 
-# Mass scalar Moon (somewhat needed to
-# rewrite tuple in bds)
+# Mass scalars (somewhat needed to
+# rewrite tuples in bds)
 m_moon = 7.34767309 * (10**22)
+m_sun = 1.989 * (10**30)
 
 ##############
 
+sun_orb_r = 1.496 * (10**11)
+sun_omega = 2 * math.pi / (3.156 * (10**7))
+sun_sta = math.radians(conf.conf["degrees_sun_start_angle_N"])
+def r_sun_vec(t):
+  x = -sun_orb_r * math.cos((math.pi/2) + sun_sta + sun_omega * t)
+  y = sun_orb_r * math.sin((math.pi/2) + sun_sta + sun_omega * t)
+  return np.array([x, y])
+
 moon_orb_r = 384398861.0
 moon_omega = 2 * math.pi / 2360000
-moon_sta = conf.conf["degrees_moon_start_angle_N"]
+moon_sta = math.radians(conf.conf["degrees_moon_start_angle_N"])
 def r_moon_vec(t):
   x = moon_orb_r * math.sin(moon_sta + moon_omega * t)
   y = moon_orb_r * math.cos(moon_sta + moon_omega * t)
@@ -47,7 +56,7 @@ def r_moon_vec(t):
 
 # The second part of each tuple is the weight, in kilograms, of each body.
 
-bds = [ (r_earth, 5.972 * (10**24)), (r_moon, m_moon), (r_sun, 1.989 * (10**30)) ]
+bds = [ (r_earth, 5.972 * (10**24)), (r_moon, m_moon), (r_sun, m_sun) ]
 
 #######################
 
@@ -74,6 +83,7 @@ def acceleration_vec(r_sc):
 a = acceleration_vec(r_sc) # Pre-compute accel vector
 
 moon_traj_debug = []
+sun_traj = []
 
 t = 0
 
@@ -83,13 +93,15 @@ while _iter < until:
 
   ### COMPUTE NEW POS OF PLANETS ###
   _iter += 1
+  t = _iter * dt
 
   r_moon = r_moon_vec(t)
   bds[1] = (r_moon, m_moon)
 
-  ##################################
+  r_sun = r_sun_vec(t)
+  bds[2] = (r_sun, m_sun)
 
-  t = _iter * dt
+  ##################################
 
   a_new = acceleration_vec(r_sc)
 
@@ -112,11 +124,17 @@ while _iter < until:
   traj.append(r_sc.copy())
 
   moon_traj_debug.append(r_moon.copy())
+  sun_traj.append(r_sun.copy())
 
   a = a_new
 
 traj = np.array(traj)
 moon_traj_debug = np.array(moon_traj_debug)
+sun_traj = np.array(sun_traj)
+
+print("Writing trajectories to file...")
+
+np.savez(conf.conf["traj_output_file"], sun=sun_traj, moon=moon_traj_debug, sc=traj)
 
 fig, ax = plt.subplots()
 ax.set_xlim(-120000000, 120000000)
@@ -140,13 +158,13 @@ ax.plot([traj[0][0]], [traj[0][1]], '^g')
 
 if (burn_executed):
   ax.text(
-    0.05,
-    0.95,
+    0.05, # x right increase
+    0.95, # y down increase
     'Burn @ T +' + str(conf.conf["seconds_burn_time_elapsed"]) + '\n' + str(conf.conf["meters_per_second_delta_v_burn"]),
     transform = ax.transAxes,
     fontsize = 10,
     verticalalignment = 'top'
-  )
+  ).set_bbox(dict(facecolor='white'))
 
 #######################
 
@@ -155,8 +173,9 @@ fig.canvas.manager.set_window_title('VLATI')
 plt.grid(True)
 line_traj = plt.plot(traj[:,0], traj[:,1], 'm-')
 plt.plot(moon_traj_debug[:,0], moon_traj_debug[:,1], 'g-')
+plt.plot(sun_traj[:,0], sun_traj[:,1], 'k-')
 
 crsr = mplcursors.cursor(line_traj)
-crsr.connect("add", lambda sel: sel.annotation.set_text("t = " + str(int(sel.index)) * dt))
+crsr.connect("add", lambda sel: sel.annotation.set_text("t = " + str(int(sel.index) * dt)))
 
 plt.show()
