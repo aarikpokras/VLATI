@@ -3,11 +3,14 @@
 - [x] Programmatically add bodies
 - [x] Planetary motion defined by user-provided functions
 - [x] Config file
+- [x] `t` single calculation move directly after `_iter` change
+- [x] Sun sinusoidal motion
 
 ## Incomplete (Plan, soon to occur)
 
+- [ ] Separate "player" program (displays entire path at e.g. 2000x spd)
+  - [x] Export trajectories to file
 - [ ] Print post (pre too?) absolute velocity in burn info thing in MPL
-- [ ] Sun motion
 - [ ] Move NumPy conversions into main.py from conf.py
 - [ ] More accurate ephemerides (SPICE/kernel file)
   - [ ] As a consequence, dates are also a part of the simulation
@@ -16,10 +19,10 @@
   - [x] Single burn
   - [ ] Multiple burns/programmatically adding
     - [ ] Would need to decrease y-coord with every burn info text box
-- [ ] `t` single calculation move directly after `_iter` change
 
 ## Incomplete (No plan, distant)
 
 - [ ] True inertial frame
 - [ ] RK4? Then we could call it "very laggy" instead of "Verlet leapfrog"
 - [ ] Continuous finite burns
+- [ ] 3D (MPL vis (hard part)/calculations)
