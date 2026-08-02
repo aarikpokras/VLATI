@@ -19,6 +19,9 @@
   - [x] Single burn
   - [ ] Multiple burns/programmatically adding
     - [ ] Would need to decrease y-coord with every burn info text box
+    - [ ] Array with all burns `[ (burn time GET, [dv vector]) ]`?
+      - [ ] If empty, no burns performed
+      - [ ] Still need to think about optimization
 
 ## Incomplete (No plan, distant)
 
@@ -26,3 +29,4 @@
 - [ ] RK4? Then we could call it "very laggy" instead of "Verlet leapfrog"
 - [ ] Continuous finite burns
 - [ ] 3D (MPL vis (hard part)/calculations)
+  - [ ] If we do this, it's much easier to implement the NAIF ephemerides, as the coords they give are 3D
