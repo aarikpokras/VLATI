@@ -5,12 +5,12 @@
 - [x] Config file
 - [x] `t` single calculation move directly after `_iter` change
 - [x] Sun sinusoidal motion
+- [x] Separate "player" program (displays entire path at e.g. 2000x spd)
+  - [x] Export trajectories to file
 
 ## Incomplete (Plan, soon to occur)
 
 ### Next release (v0.3.0)
-- [ ] Separate "player" program (displays entire path at e.g. 2000x spd)
-  - [x] Export trajectories to file
 - [ ] Patching of burns (allowing burns @ certain times)
   - [x] Time tooltips for reference
   - [x] Single burn
