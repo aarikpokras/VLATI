@@ -29,6 +29,7 @@
 ## Incomplete (No plan, distant)
 
 - [ ] True inertial frame
+- [ ] On click, option for "make burn here" or something - maybe move away from MPL for this
 - [ ] RK4? Then we could call it "very laggy" instead of "Verlet leapfrog"
 - [ ] Continuous finite burns
 - [ ] 3D (MPL vis (hard part)/calculations)
