@@ -9,7 +9,7 @@ VLATI is a 2-dimensional simulation of a Moon-Sun-Earth system.
 
 It uses a Velocity Verlet integrator, along with the law of universal gravitation and very approximate (currently only lunar) ephemerides to find the path of a spacecraft through space given an initial state vector.
 
-There are [plans](https://github.com/aarikpokras/VLATI/blob/master/TODO.md) to increase the accuracy of the ephemerides, as they are currently only sinusoidal (circular).
+There are [plans](https://github.com/aarikpokras/VLATI/blob/master/TODO.md) to increase the accuracy of the ephemerides, as they are currently only sinusoidal (circular), but it's worth noting that NAIF provides ephemerides with 3D coordinates, so this is unlikely to happen until I add another dimension into this simulation.
 
 You can take a look at the [wiki](https://github.com/aarikpokras/VLATI/wiki) for VLATI's documentation.
 
