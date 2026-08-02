@@ -25,6 +25,7 @@
 ### Other
 - [ ] More accurate ephemerides (SPICE/kernel file)
   - [ ] As a consequence, dates are also a part of the simulation
+- [ ] Move main visualizer to separate file
 
 ## Incomplete (No plan, distant)
 
