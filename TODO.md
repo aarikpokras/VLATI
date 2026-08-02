@@ -8,7 +8,7 @@
 
 ## Incomplete (Plan, soon to occur)
 
-### Next release
+### Next release (v0.3.0)
 - [ ] Separate "player" program (displays entire path at e.g. 2000x spd)
   - [x] Export trajectories to file
 - [ ] Patching of burns (allowing burns @ certain times)
