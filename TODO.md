@@ -21,6 +21,8 @@
       - [ ] Still need to think about optimization w/ conditionals
 - [ ] Print post (pre too?) absolute velocity in burn info thing in MPL
 - [ ] Move NumPy conversions into main.py from conf.py
+- [ ] VLATI-VIS: Single frame * multiplier calculation
+- [ ] VLATI-VIS: Apply multiplier before frames
 
 ### Other
 - [ ] More accurate ephemerides (SPICE/kernel file)
