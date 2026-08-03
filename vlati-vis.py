@@ -40,10 +40,11 @@ sun_dot, = ax.plot([traj_sun[0][0]], [traj_sun[0][1]], 'yo')
 earth_dot = ax.plot([0], [0], 'bo')
 
 def update(frame):
-  plt.xlabel(f"t = {frame * MULTIPLIER}")
-  sc_dot.set_data([traj_sc[frame * MULTIPLIER][0]], [traj_sc[frame * MULTIPLIER][1]])
-  moon_dot.set_data([traj_moon[frame * MULTIPLIER][0]], [traj_moon[frame * MULTIPLIER][1]])
-  sun_dot.set_data([traj_sun[frame * MULTIPLIER][0]], [traj_sun[frame * MULTIPLIER][1]])
+  t_ = frame * MULTIPLIER
+  plt.xlabel(f"t = {t_}")
+  sc_dot.set_data([traj_sc[t_][0]], [traj_sc[t_][1]])
+  moon_dot.set_data([traj_moon[t_][0]], [traj_moon[t_][1]])
+  sun_dot.set_data([traj_sun[t_][0]], [traj_sun[t_][1]])
   return sc_dot, moon_dot, sun_dot
 
 anim = FuncAnimation(fig, update, frames=range(start_frame, end_frame), interval=0, blit=False, repeat=True)
