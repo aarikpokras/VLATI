@@ -29,7 +29,7 @@ r_sun = np.array([149599999999.7966, 0.0])
 
 # Position vector of the spacecraft
 #r_sc = np.array([6537000.0, 0.0]) # LEO
-r_sc = conf.conf["meters_spacecraft_start_vec"]
+r_sc = np.array(conf.conf["meters_spacecraft_start_vec"])
 
 # Mass scalars (somewhat needed to
 # rewrite tuples in bds)
@@ -63,8 +63,7 @@ bds = [ (r_earth, 5.972 * (10**24)), (r_moon, m_moon), (r_sun, m_sun) ]
 #######################
 
 dt = conf.conf["seconds_timestep"]
-#v = np.array([0.0, 11000.0]) # was 7800, good start for LEO
-v = conf.conf["meters_per_second_spacecraft_start_v_vec"]
+v = np.array(conf.conf["meters_per_second_spacecraft_start_v_vec"])
 _iter = 0
 
 traj = []
