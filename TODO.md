@@ -1,3 +1,6 @@
+> [!NOTE]
+> Take a look at the [Issues page](https://github.com/aarikpokras/VLATI/issues) for more up-to-date and organized information.
+
 ## Complete
 
 - [x] Programmatically add bodies
