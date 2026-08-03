@@ -28,6 +28,8 @@
 - [ ] More accurate ephemerides (SPICE/kernel file)
   - [ ] As a consequence, dates are also a part of the simulation
 - [ ] Move main visualizer to separate file
+- [ ] Make npz export optional
+  - [ ] If no key in conf.py, don't export
 
 ## Incomplete (No plan, distant)
 
