@@ -1,10 +1,9 @@
 import numpy as np
 
 # A configuration file for a simple lunar flyby with a
-# perilune of about 5000km.
-# To calculate this, I used Kepler's equations and the vis
-# viva equation. It is the config file used for the gif on
-# the README.
+# perilune of about 5000km. To calculate this, I used
+# Kepler's equations and the vis viva equation (and, 
+# of course, VLATI to verify).
 ### CONFIG ###
 
 conf = {
