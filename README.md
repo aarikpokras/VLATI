@@ -3,6 +3,7 @@ Verlet Leapfrog Astrodynamic Trajectory Integrator
 
 <p align="center">
   <img src="https://cdn.jsdelivr.net/gh/aarikpokras/vlati@2228111/images/vlati-out.png" width="700" />
+  <img src="https://cdn.jsdelivr.net/gh/aarikpokras/vlati@5791ba1/images/moon_flyby.gif" width="700" />
 </p>
 
 VLATI is a 2-dimensional simulation of a Moon-Sun-Earth system.
