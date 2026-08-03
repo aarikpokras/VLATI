@@ -30,6 +30,9 @@
 - [ ] Move main visualizer to separate file
 - [ ] Make npz export optional
   - [ ] If no key in conf.py, don't export
+- [ ] 3D (MPL vis (hard part)/calculations)
+  - [ ] If we do this, it's much easier to implement the NAIF ephemerides, as the coords they give are 3D
+  - [ ] Need to think of npz exports... massive increase in size; a good idea would be to use `savez_compressed`
 
 ## Incomplete (No plan, distant)
 
@@ -37,5 +40,3 @@
 - [ ] On click, option for "make burn here" or something - maybe move away from MPL for this
 - [ ] RK4? Then we could call it "very laggy" instead of "Verlet leapfrog"
 - [ ] Continuous finite burns
-- [ ] 3D (MPL vis (hard part)/calculations)
-  - [ ] If we do this, it's much easier to implement the NAIF ephemerides, as the coords they give are 3D
