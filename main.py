@@ -9,8 +9,6 @@ import conf
 
 burn_arr = conf.conf["burn_array"]
 
-burn_executed = False
-
 # How many iterations of the
 # simulator are to be run.
 # The higher the value, the
@@ -162,16 +160,6 @@ dotm = ax.plot([r_moon[0]], [r_moon[1]], 'ko')
 
 # Traj start marker
 ax.plot([traj[0][0]], [traj[0][1]], '^g')
-
-if (burn_executed):
-  ax.text(
-    0.05, # x right increase
-    0.95, # y down increase
-    'Burn @ T +' + str(conf.conf["seconds_burn_time_elapsed"]) + '\n' + str(conf.conf["meters_per_second_delta_v_burn"]),
-    transform = ax.transAxes,
-    fontsize = 10,
-    verticalalignment = 'top'
-  ).set_bbox(dict(facecolor='white'))
 
 #######################
 
