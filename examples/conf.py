@@ -2,7 +2,8 @@ import numpy as np
 
 # A configuration file for a simple, distant lunar flyby.
 # To calculate this, I used Kepler's equations and the vis
-# viva equation.
+# viva equation. It is the config file used for the gif on
+# the README.
 ### CONFIG ###
 
 conf = {
