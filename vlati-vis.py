@@ -39,20 +39,20 @@ moon_dot, = ax.plot([traj_moon[0][0]], [traj_moon[0][1]], 'ko')
 sun_dot, = ax.plot([traj_sun[0][0]], [traj_sun[0][1]], 'yo')
 earth_dot = ax.plot([0], [0], 'bo')
 
-moonfmts = r'$|\vec{r_{sc}}-\vec{r_{moon}}| = $'
-earthfmts = r'$|\vec{r_{sc}}-\vec{r_{earth}}| = $'
-sunfmts = r'$\frac{|\vec{r_{sc}}-\vec{r_{sun}}|}{1000} = $'
+moonfmts = "MOON     "
+earthfmts = "EARTH    "
+sunfmts = "SUN/1000 "
 
-moon_ro = ax.text(0, 0, moonfmts, fontsize=10, transform=ax.transAxes, bbox=dict(fc='white'))
-earth_ro = ax.text(0, 0.08, earthfmts, fontsize=10, transform=ax.transAxes, bbox=dict(fc='white'))
-sun_ro = ax.text(0, 0.16, sunfmts, fontsize=10, transform=ax.transAxes, bbox=dict(fc='white'))
+moon_ro = ax.text(0.02, 0.02, moonfmts, fontsize=10, transform=ax.transAxes, fontfamily='DejaVu Sans Mono')
+earth_ro = ax.text(0.02, 0.08, earthfmts, fontsize=10, transform=ax.transAxes, fontfamily='DejaVu Sans Mono')
+sun_ro = ax.text(0.02, 0.14, sunfmts, fontsize=10, transform=ax.transAxes, fontfamily='DejaVu Sans Mono')
 
 def update(frame):
   t_ = frame * MULTIPLIER
-  moon_ro.set_text(f"{moonfmts}{np.linalg.norm(traj_sc[t_] - traj_moon[t_])}")
-  earth_ro.set_text(f"{earthfmts}{np.linalg.norm(traj_sc[t_] - np.array([0, 0]))}")
-  sun_ro.set_text(f"{sunfmts}{np.linalg.norm(traj_sc[t_] - traj_sun[t_])/1000}")
-  plt.xlabel(f"t = {t_}")
+  moon_ro.set_text(f"{moonfmts}{np.linalg.norm(traj_sc[t_] - traj_moon[t_]):.11f}")
+  earth_ro.set_text(f"{earthfmts}{np.linalg.norm(traj_sc[t_] - np.array([0, 0])):.11f}")
+  sun_ro.set_text(f"{sunfmts}{np.linalg.norm(traj_sc[t_] - traj_sun[t_])/1000:.11f}")
+  plt.xlabel(f"t = {t_}", fontsize=10, fontfamily='DejaVu Sans Mono', loc='left')
   sc_dot.set_data([traj_sc[t_][0]], [traj_sc[t_][1]])
   moon_dot.set_data([traj_moon[t_][0]], [traj_moon[t_][1]])
   sun_dot.set_data([traj_sun[t_][0]], [traj_sun[t_][1]])
