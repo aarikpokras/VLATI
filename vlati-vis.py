@@ -39,8 +39,19 @@ moon_dot, = ax.plot([traj_moon[0][0]], [traj_moon[0][1]], 'ko')
 sun_dot, = ax.plot([traj_sun[0][0]], [traj_sun[0][1]], 'yo')
 earth_dot = ax.plot([0], [0], 'bo')
 
+moonfmts = r'$|\vec{r_{sc}}-\vec{r_{moon}}| = $'
+earthfmts = r'$|\vec{r_{sc}}-\vec{r_{earth}}| = $'
+sunfmts = r'$\frac{|\vec{r_{sc}}-\vec{r_{sun}}|}{1000} = $'
+
+moon_ro = ax.text(0, 0, moonfmts, fontsize=10, transform=ax.transAxes, bbox=dict(fc='white'))
+earth_ro = ax.text(0, 0.08, earthfmts, fontsize=10, transform=ax.transAxes, bbox=dict(fc='white'))
+sun_ro = ax.text(0, 0.16, sunfmts, fontsize=10, transform=ax.transAxes, bbox=dict(fc='white'))
+
 def update(frame):
   t_ = frame * MULTIPLIER
+  moon_ro.set_text(f"{moonfmts}{np.linalg.norm(traj_sc[t_] - traj_moon[t_])}")
+  earth_ro.set_text(f"{earthfmts}{np.linalg.norm(traj_sc[t_] - np.array([0, 0]))}")
+  sun_ro.set_text(f"{sunfmts}{np.linalg.norm(traj_sc[t_] - traj_sun[t_])/1000}")
   plt.xlabel(f"t = {t_}")
   sc_dot.set_data([traj_sc[t_][0]], [traj_sc[t_][1]])
   moon_dot.set_data([traj_moon[t_][0]], [traj_moon[t_][1]])
