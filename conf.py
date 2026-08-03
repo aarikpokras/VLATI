@@ -10,9 +10,7 @@ conf = {
   "degrees_sun_start_angle_N": 0,
   "meters_spacecraft_start_vec": np.array([6537000.0, 0.0]),
   "meters_per_second_spacecraft_start_v_vec": np.array([0.0, 11200.0]),
-  "bool_burn": False,
-  "meters_per_second_delta_v_burn": np.array([1000.0, 0.0]),
-  "seconds_burn_time_elapsed": 200000,
+  "burn_array": ( [200000, np.array([1000.0, 0.0]), 0], [300000, np.array([1500.0, 0.0]), 0] )
 }
 
 ##############
