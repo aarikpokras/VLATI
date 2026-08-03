@@ -7,6 +7,8 @@ import mplcursors
 import sys
 import conf
 
+burn_arr = conf.conf["burn_array"]
+
 burn_executed = False
 
 # How many iterations of the
@@ -110,12 +112,15 @@ while _iter < until:
   v += 0.5 * (a + a_new) * dt   # New vel for next loop, avg of a and a_new
                                 # vel production
 
-  if (t >= conf.conf["seconds_burn_time_elapsed"]):
-    if (not burn_executed and conf.conf["bool_burn"]):
-      v += conf.conf["meters_per_second_delta_v_burn"]
-      burn_executed = True
-      print("\n++++++++++++++++++++++++++++++++++\n")
-      print("T +" + str(t) + "s Burn executed " + str(conf.conf["meters_per_second_delta_v_burn"]))
+# ( [ burn_met, delta_v, executed?changeifyes ], ... )
+
+  for burn in burn_arr:
+    if (t >= burn[0]):
+      if (burn[2] == 0):
+        v += burn[1]
+        burn[2] = 1
+        print("\n++++++++++++++++++++++++++++++++++\n")
+        print("T +" + str(t) + "s Burn executed " + str(burn[1]))
 
   if (_iter % modulo == 0):
     print("\n===============================================\n")
@@ -178,6 +183,6 @@ plt.plot(moon_traj_debug[:,0], moon_traj_debug[:,1], 'g-')
 plt.plot(sun_traj[:,0], sun_traj[:,1], 'k-')
 
 crsr = mplcursors.cursor(line_traj)
-crsr.connect("add", lambda sel: sel.annotation.set_text("t = " + str(int(sel.index) * dt)))
+crsr.connect("add", lambda sel: sel.annotation.set_text("t = " + str(int(sel.index * dt))))
 
 plt.show()
