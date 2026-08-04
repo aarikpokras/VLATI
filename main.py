@@ -20,12 +20,9 @@ G = 6.6743 * (10**-11) # m^3 kg^-1 s^-2
 
 ### R VECS ###
 
-# Adjust each of these to change the
-# positions of each of the bodies.
-
-r_moon = np.array([384398861.0, 0.0])
-r_earth = np.array([0.0, 0.0])
-r_sun = np.array([149599999999.7966, 0.0])
+r_moon = np.array([384398861.0, 0.0, 0.0])
+r_earth = np.array([0.0, 0.0, 0.0])
+r_sun = np.array([149599999999.7966, 0.0, 0.0])
 
 # Position vector of the spacecraft
 #r_sc = np.array([6537000.0, 0.0]) # LEO
@@ -44,7 +41,8 @@ sun_sta = math.radians(conf.conf["degrees_sun_start_angle_N"])
 def r_sun_vec(t):
   x = -sun_orb_r * math.cos((math.pi/2) + sun_sta + sun_omega * t)
   y = sun_orb_r * math.sin((math.pi/2) + sun_sta + sun_omega * t)
-  return np.array([x, y])
+  z = 0
+  return np.array([x, y, z])
 
 moon_orb_r = 384398861.0
 moon_omega = 2 * math.pi / 2360000
@@ -52,7 +50,8 @@ moon_sta = math.radians(conf.conf["degrees_moon_start_angle_N"])
 def r_moon_vec(t):
   x = moon_orb_r * math.sin(moon_sta + moon_omega * t)
   y = moon_orb_r * math.cos(moon_sta + moon_omega * t)
-  return np.array([x, y])
+  z = 0
+  return np.array([x, y, z])
 
 ### ARRAY OF BODIES ###
 
@@ -73,7 +72,7 @@ modulo = until // 20
 print("In progress")
 
 def acceleration_vec(r_sc):
-  a = np.zeros(2) # Init the accel vector which will be repeatedly added to
+  a = np.zeros(3) # Init the accel vector which will be repeatedly added to
 
   for r_body, wt in bds:
     r12 = r_sc - r_body
@@ -140,9 +139,11 @@ print("Writing trajectories to file...")
 
 np.savez(conf.conf["traj_output_file"], sun=sun_traj, moon=moon_traj_debug, sc=traj)
 
-fig, ax = plt.subplots()
+fig = plt.figure()
+ax = fig.add_subplot(projection='3d')
 ax.set_xlim(-120000000, 120000000)
 ax.set_ylim(-120000000, 120000000)
+ax.set_zlim(-120000000, 120000000)
 ax.set_aspect('equal')
 
 ### MPL BODY COLORS ###
@@ -164,12 +165,24 @@ ax.plot([traj[0][0]], [traj[0][1]], '^g')
 
 fig.canvas.manager.set_window_title('VLATI')
 
-plt.grid(True)
-line_traj = plt.plot(traj[:,0], traj[:,1], 'm-')
-plt.plot(moon_traj_debug[:,0], moon_traj_debug[:,1], 'g-')
-plt.plot(sun_traj[:,0], sun_traj[:,1], 'k-')
+ax.grid(False)
+line_traj = ax.plot(traj[:,0], traj[:,1], traj[:,2], 'm-')
+ax.plot(moon_traj_debug[:,0], moon_traj_debug[:,1], moon_traj_debug[:,2], 'g-')
+ax.plot(sun_traj[:,0], sun_traj[:,1], sun_traj[:,2], 'k-')
 
-crsr = mplcursors.cursor(line_traj)
-crsr.connect("add", lambda sel: sel.annotation.set_text("t = " + str(int(sel.index * dt))))
+#crsr = mplcursors.cursor(line_traj)
+#crsr.connect("add", lambda sel: sel.annotation.set_text("t = " + str(int(sel.index * dt))))
+
+ax.xaxis.set_pane_color((1.0, 1.0, 1.0, 0.0))
+ax.yaxis.set_pane_color((1.0, 1.0, 1.0, 0.0))
+ax.zaxis.set_pane_color((1.0, 1.0, 1.0, 0.0))
+
+ax.xaxis.line.set_color('red')
+ax.yaxis.line.set_color('green')
+ax.zaxis.line.set_color('blue')
+
+ax.tick_params(axis='x', colors='red')
+ax.tick_params(axis='y', colors='green')
+ax.tick_params(axis='z', colors='blue')
 
 plt.show()
