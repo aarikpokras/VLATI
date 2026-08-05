@@ -24,7 +24,7 @@ traj_sc = trajs["sc"]
 traj_moon = trajs["moon"]
 traj_sun = trajs["sun"]
 
-fig = plt.figure()
+fig = plt.figure(figsize=(7, 7))
 ax = fig.add_subplot(projection='3d')
 
 ax.set_xlim(-120000000, 120000000)
@@ -45,21 +45,12 @@ moonfmts = "MOON     "
 earthfmts = "EARTH    "
 sunfmts = "SUN/1000 "
 
-moon_ro = ax.text2D(0.02, 0.02, moonfmts, fontsize=10, transform=ax.transAxes, fontfamily='DejaVu Sans Mono')
-earth_ro = ax.text2D(0.02, 0.08, earthfmts, fontsize=10, transform=ax.transAxes, fontfamily='DejaVu Sans Mono')
-sun_ro = ax.text2D(0.02, 0.14, sunfmts, fontsize=10, transform=ax.transAxes, fontfamily='DejaVu Sans Mono')
+moon_ro = ax.text2D(0.02, 0.02, moonfmts + "ERROR", fontsize=10, transform=ax.transAxes, fontfamily='DejaVu Sans Mono')
+earth_ro = ax.text2D(0.02, 0.08, earthfmts + "ERROR", fontsize=10, transform=ax.transAxes, fontfamily='DejaVu Sans Mono')
+sun_ro = ax.text2D(0.02, 0.14, sunfmts + "ERROR", fontsize=10, transform=ax.transAxes, fontfamily='DejaVu Sans Mono')
+time_ro = ax.text2D(0.02, 0.95, "T = ", fontsize=10, transform=ax.transAxes, fontfamily='DejaVu Sans Mono')
 
-ax.xaxis.set_pane_color((1.0, 1.0, 1.0, 0.0))
-ax.yaxis.set_pane_color((1.0, 1.0, 1.0, 0.0))
-ax.zaxis.set_pane_color((1.0, 1.0, 1.0, 0.0))
-
-ax.xaxis.line.set_color((1.0, 1.0, 1.0, 0.0))
-ax.yaxis.line.set_color((1.0, 1.0, 1.0, 0.0))
-ax.zaxis.line.set_color((1.0, 1.0, 1.0, 0.0))
-
-ax.tick_params(axis='x', colors='red')
-ax.tick_params(axis='y', colors='green')
-ax.tick_params(axis='z', colors='blue')
+ax.set_axis_off()
 
 cust_spines = {
   "+z": {
@@ -88,7 +79,7 @@ def update(frame):
   moon_ro.set_text(f"{moonfmts}{np.linalg.norm(traj_sc[t_] - traj_moon[t_]):.11f}")
   earth_ro.set_text(f"{earthfmts}{np.linalg.norm(traj_sc[t_] - np.array([0, 0, 0])):.11f}")
   sun_ro.set_text(f"{sunfmts}{np.linalg.norm(traj_sc[t_] - traj_sun[t_])/1000:.11f}")
-  plt.xlabel(f"t = {t_}", fontsize=10, fontfamily='DejaVu Sans Mono', loc='left')
+  time_ro.set_text(f"T = {t_}")
 
   sc_dot.set_data([traj_sc[t_][0]], [traj_sc[t_][1]])
   sc_dot.set_3d_properties([traj_sc[t_][2]])
