@@ -1,7 +1,7 @@
 # VLATI
-Verlet Leapfrog Astrodynamic Trajectory Integrator
 
 <p align="center">
+Verlet Leapfrog Astrodynamic Trajectory Integrator
 <!--  <img src="https://cdn.jsdelivr.net/gh/aarikpokras/vlati@2228111/images/vlati-out.png" width="700" />
   <img src="https://cdn.jsdelivr.net/gh/aarikpokras/vlati@5791ba1/images/moon_flyby.gif" width="700" />-->
   <img src="https://cdn.jsdelivr.net/gh/aarikpokras/vlati@09a5994/images/vlati-3d-out.png" width="700">
