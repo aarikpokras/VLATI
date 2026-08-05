@@ -17,7 +17,7 @@ Notable features:
 * Animated and quantitative visualization program
 * Fast computation of trajectory
 
-There are plans to increase the accuracy of the ephemerides, as they are currently only sinusoidal (circular), but it's worth noting that NAIF provides ephemerides with 3D coordinates, so this is unlikely to happen until I [add another dimension](https://github.com/aarikpokras/VLATI/issues/6) into this simulation.
+There are plans to increase the accuracy of the ephemerides, as they are currently only sinusoidal (circular).
 
 You can take a look at the [wiki](https://github.com/aarikpokras/VLATI/wiki) for VLATI's documentation.
 
