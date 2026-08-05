@@ -49,6 +49,40 @@ moon_ro = ax.text2D(0.02, 0.02, moonfmts, fontsize=10, transform=ax.transAxes, f
 earth_ro = ax.text2D(0.02, 0.08, earthfmts, fontsize=10, transform=ax.transAxes, fontfamily='DejaVu Sans Mono')
 sun_ro = ax.text2D(0.02, 0.14, sunfmts, fontsize=10, transform=ax.transAxes, fontfamily='DejaVu Sans Mono')
 
+ax.xaxis.set_pane_color((1.0, 1.0, 1.0, 0.0))
+ax.yaxis.set_pane_color((1.0, 1.0, 1.0, 0.0))
+ax.zaxis.set_pane_color((1.0, 1.0, 1.0, 0.0))
+
+ax.xaxis.line.set_color((1.0, 1.0, 1.0, 0.0))
+ax.yaxis.line.set_color((1.0, 1.0, 1.0, 0.0))
+ax.zaxis.line.set_color((1.0, 1.0, 1.0, 0.0))
+
+ax.tick_params(axis='x', colors='red')
+ax.tick_params(axis='y', colors='green')
+ax.tick_params(axis='z', colors='blue')
+
+cust_spines = {
+  "+z": {
+    "x": [0, 0],
+    "y": [0, 0], 
+    "z": [0, 120000000]
+  },
+  "+y": {
+    "x": [0, 0],
+    "y": [0, 120000000],
+    "z": [0, 0]
+  },
+  "+x": {
+    "x": [0, 120000000],
+    "y": [0, 0],
+    "z": [0, 0],
+  }
+}
+
+ax.plot(cust_spines["+z"]["x"], cust_spines["+z"]["y"], cust_spines["+z"]["z"], 'b-', linewidth=0.5)
+ax.plot(cust_spines["+y"]["x"], cust_spines["+y"]["y"], cust_spines["+y"]["z"], 'g-', linewidth=0.5)
+ax.plot(cust_spines["+x"]["x"], cust_spines["+x"]["y"], cust_spines["+x"]["z"], 'r-', linewidth=0.5)
+
 def update(frame):
   t_ = frame * MULTIPLIER
   moon_ro.set_text(f"{moonfmts}{np.linalg.norm(traj_sc[t_] - traj_moon[t_]):.11f}")
@@ -68,5 +102,7 @@ def update(frame):
   return sc_dot, moon_dot, sun_dot
 
 anim = FuncAnimation(fig, update, frames=range(start_frame, end_frame), interval=0, blit=False, repeat=True)
+
+ax.grid(False)
 
 plt.show()
