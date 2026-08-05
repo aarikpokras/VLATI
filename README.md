@@ -8,7 +8,7 @@ Verlet Leapfrog Astrodynamic Trajectory Integrator
   <img src="https://cdn.jsdelivr.net/gh/aarikpokras/vlati@09a5994/images/vlati-vis-lunar-flyby.gif" width="700">
 </p>
 
-VLATI is a 2-dimensional simulation of a Moon-Sun-Earth system.
+VLATI is a simulation of an Earth-Moon-Sun system, aimed at astrodynamics and trajectory calculation.
 
 It uses a Velocity Verlet integrator, along with the law of universal gravitation and very approximate ephemerides to find the path of a spacecraft through space given an initial state vector.
 
