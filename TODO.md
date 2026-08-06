@@ -1,6 +1,7 @@
 > [!NOTE]
-> Take a look at the [Issues page](https://github.com/aarikpokras/VLATI/issues) for more up-to-date and organized information.
+> Take a look at the [Issues page](https://github.com/aarikpokras/VLATI/issues) to see what's next.
 
+<!--
 ## Complete
 
 - [x] Programmatically add bodies
@@ -43,3 +44,4 @@
 - [ ] On click, option for "make burn here" or something - maybe move away from MPL for this
 - [ ] RK4? Then we could call it "very laggy" instead of "Verlet leapfrog"
 - [ ] Continuous finite burns
+-->
