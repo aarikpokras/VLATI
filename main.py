@@ -6,8 +6,18 @@ import matplotlib.pyplot as plt
 import mplcursors
 import sys
 import conf
+import spiceypy as spice
 
 burn_arr = conf.conf["burn_array"]
+
+spice.kclear()
+spice.furnsh(conf.conf["leap_file"])
+spice.furnsh(conf.conf["ephemeris_file"])
+
+START_ET_ = conf.conf["utc_start_date"]
+ET = spice.str2et(START_ET_)
+
+AXIS_REFR = "ECLIPJ2000"
 
 # How many iterations of the
 # simulator are to be run.
@@ -94,11 +104,12 @@ while _iter < until:
   ### COMPUTE NEW POS OF PLANETS ###
   _iter += 1
   t = _iter * dt
+  ET += dt
 
-  r_moon = r_moon_vec(t)
+  r_moon = spice.spkpos("MOON", ET, AXIS_REFR, "NONE", "EARTH")[0] * 1000 # returns NumPy array in km
   bds[1] = (r_moon, m_moon)
 
-  r_sun = r_sun_vec(t)
+  r_sun = spice.spkpos("SUN", ET, AXIS_REFR, "NONE", "EARTH")[0] * 1000
   bds[2] = (r_sun, m_sun)
 
   ##################################
