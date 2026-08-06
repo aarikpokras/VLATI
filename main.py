@@ -45,24 +45,6 @@ m_sun = 1.989 * (10**30)
 
 ##############
 
-sun_orb_r = 1.496 * (10**11)
-sun_omega = 2 * math.pi / (3.156 * (10**7))
-sun_sta = math.radians(conf.conf["degrees_sun_start_angle_N"])
-def r_sun_vec(t):
-  x = -sun_orb_r * math.cos((math.pi/2) + sun_sta + sun_omega * t)
-  y = sun_orb_r * math.sin((math.pi/2) + sun_sta + sun_omega * t)
-  z = 0
-  return np.array([x, y, z])
-
-moon_orb_r = 384398861.0
-moon_omega = 2 * math.pi / 2360000
-moon_sta = math.radians(conf.conf["degrees_moon_start_angle_N"])
-def r_moon_vec(t):
-  x = moon_orb_r * math.sin(moon_sta + moon_omega * t)
-  y = moon_orb_r * math.cos(moon_sta + moon_omega * t)
-  z = 0
-  return np.array([x, y, z])
-
 ### ARRAY OF BODIES ###
 
 # The second part of each tuple is the weight, in kilograms, of each body.
