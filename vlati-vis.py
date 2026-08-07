@@ -5,6 +5,11 @@ import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 import sys
 from pathlib import Path
+import conf
+import spiceypy as spice
+
+spice.kclear()
+spice.furnsh(conf.conf["leap_file"])
 
 if (len(sys.argv) != 5):
   print("VLATI-VIS: Error: Too many or too few arguments.")
@@ -13,6 +18,8 @@ if (len(sys.argv) != 5):
 if (not Path(sys.argv[1]).is_file()):
   print("VLATI-VIS: Error: trajectory file should be an existing file.")
   sys.exit(1)
+
+START_ET = spice.str2et(conf.conf["utc_start_date"])
 
 start_frame = int(sys.argv[2])
 end_frame = int(sys.argv[3])
@@ -49,13 +56,14 @@ moon_ro = ax.text2D(0.02, 0.02, moonfmts + "ERROR", fontsize=10, transform=ax.tr
 earth_ro = ax.text2D(0.02, 0.08, earthfmts + "ERROR", fontsize=10, transform=ax.transAxes, fontfamily='DejaVu Sans Mono')
 sun_ro = ax.text2D(0.02, 0.14, sunfmts + "ERROR", fontsize=10, transform=ax.transAxes, fontfamily='DejaVu Sans Mono')
 time_ro = ax.text2D(0.02, 0.95, "T = ", fontsize=10, transform=ax.transAxes, fontfamily='DejaVu Sans Mono')
+cal_ro = ax.text2D(0.02, 1, "CALENDAR", fontsize=10, transform=ax.transAxes, fontfamily='DejaVu Sans Mono')
 
 ax.set_axis_off()
 
 cust_spines = {
   "+z": {
     "x": [0, 0],
-    "y": [0, 0], 
+    "y": [0, 0],
     "z": [0, 120000000]
   },
   "+y": {
@@ -75,6 +83,9 @@ ax.plot(cust_spines["+y"]["x"], cust_spines["+y"]["y"], cust_spines["+y"]["z"], 
 ax.plot(cust_spines["+x"]["x"], cust_spines["+x"]["y"], cust_spines["+x"]["z"], 'r-', linewidth=0.5)
 
 def update(frame):
+  et = START_ET + frame
+  time_utc = spice.et2utc(et, "C", 3)
+  cal_ro.set_text(time_utc)
   t_ = frame * MULTIPLIER
   moon_ro.set_text(f"{moonfmts}{np.linalg.norm(traj_sc[t_] - traj_moon[t_]):.11f}")
   earth_ro.set_text(f"{earthfmts}{np.linalg.norm(traj_sc[t_] - np.array([0, 0, 0])):.11f}")
