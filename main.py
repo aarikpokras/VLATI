@@ -148,8 +148,8 @@ ax.set_aspect('equal')
 # dictates the color. For more info, google "mpl
 # format strings".
 dote = ax.plot([r_earth[0]], [r_earth[1]], 'bo')
-dots = ax.plot([r_sun[0]], [r_sun[1]], 'yo')  
-dotm = ax.plot([r_moon[0]], [r_moon[1]], 'ko')
+dots = ax.scatter(r_sun[0], r_sun[1], r_sun[2], c='#ffd343', marker='o', s=40)
+dotm = ax.scatter(r_moon[0], r_moon[1], r_moon[2], c='black', marker='o')
 
 # Traj start marker
 ax.plot([traj[0][0]], [traj[0][1]], '^g')
