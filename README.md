@@ -4,8 +4,8 @@
 Verlet Leapfrog Astrodynamic Trajectory Integrator
 <!--  <img src="https://cdn.jsdelivr.net/gh/aarikpokras/vlati@2228111/images/vlati-out.png" width="700" />
   <img src="https://cdn.jsdelivr.net/gh/aarikpokras/vlati@5791ba1/images/moon_flyby.gif" width="700" />-->
-  <img src="https://cdn.jsdelivr.net/gh/aarikpokras/vlati@09a5994/images/vlati-3d-out.png" width="700">
-  <img src="https://cdn.jsdelivr.net/gh/aarikpokras/vlati@09a5994/images/vlati-vis-lunar-flyby.gif" width="700">
+  <img src="https://cdn.jsdelivr.net/gh/aarikpokras/vlati@8a38846/images/vlati-stat-out-new.png" width="700">
+  <img src="https://cdn.jsdelivr.net/gh/aarikpokras/vlati@8a38846/images/vlati-vis.gif" width="700">
 </p>
 
 VLATI is a restricted four-body problem solver of an Earth-Moon-Sun system, aimed at astrodynamics and trajectory calculation.
