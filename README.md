@@ -15,7 +15,7 @@ It uses a Velocity Verlet integrator, along with the law of universal gravitatio
 Notable features:
 * Impulsive burns
 * Animated and quantitative visualization program
-* Fast computation of trajectory
+* Real lunar and solar ephemerides
 
 There are plans to increase the accuracy of the ephemerides, as they are currently only sinusoidal (circular).
 
