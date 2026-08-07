@@ -1,5 +1,8 @@
 import numpy as np
 
+# This no longer works. It's still here for compatibility.
+# This config file was written before real ephemerides were added.
+
 ### CONFIG ###
 
 conf = {
