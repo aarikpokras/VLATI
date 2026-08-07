@@ -10,7 +10,7 @@ Verlet Leapfrog Astrodynamic Trajectory Integrator
 
 VLATI is a restricted four-body problem solver of an Earth-Moon-Sun system, aimed at astrodynamics and trajectory calculation.
 
-It uses a Velocity Verlet integrator, along with the law of universal gravitation and very approximate ephemerides to find the path of a spacecraft through space given an initial state vector.
+It uses a Velocity Verlet integrator, along with the law of universal gravitation and accurate ephemerides to find the path of a spacecraft through space given an initial state vector.
 
 Notable features:
 * Impulsive burns
