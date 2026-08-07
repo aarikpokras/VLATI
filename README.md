@@ -19,7 +19,7 @@ Notable features:
 
 There are plans to increase the accuracy of the ephemerides, as they are currently only sinusoidal (circular).
 
-You can take a look at the [wiki](https://github.com/aarikpokras/VLATI/wiki) for VLATI's documentation.
+You can take a look at the documentation directory for VLATI's documentation.
 
 ## Installation
 To install VLATI, first install its [dependencies](https://github.com/aarikpokras/VLATI/wiki/Dependencies). Then you can either download its zip from the Code tab, or git clone it, then enter the directory and run the configure script:
