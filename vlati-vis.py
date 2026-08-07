@@ -83,10 +83,10 @@ ax.plot(cust_spines["+y"]["x"], cust_spines["+y"]["y"], cust_spines["+y"]["z"], 
 ax.plot(cust_spines["+x"]["x"], cust_spines["+x"]["y"], cust_spines["+x"]["z"], 'r-', linewidth=0.5)
 
 def update(frame):
-  et = START_ET + frame
+  t_ = frame * MULTIPLIER
+  et = START_ET + t_
   time_utc = spice.et2utc(et, "C", 3)
   cal_ro.set_text(time_utc)
-  t_ = frame * MULTIPLIER
   moon_ro.set_text(f"{moonfmts}{np.linalg.norm(traj_sc[t_] - traj_moon[t_]):.11f}")
   earth_ro.set_text(f"{earthfmts}{np.linalg.norm(traj_sc[t_] - np.array([0, 0, 0])):.11f}")
   sun_ro.set_text(f"{sunfmts}{np.linalg.norm(traj_sc[t_] - traj_sun[t_])/1000:.11f}")
