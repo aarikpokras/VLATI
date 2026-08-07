@@ -1,4 +1,4 @@
-To install VLATI, first install its [dependencies](https://github.com/aarikpokras/VLATI/wiki/Dependencies). Then you can either download its zip from the Code tab, or git clone it, then enter the directory and run the configure script:
+To install VLATI, first install its dependencies. Then you can either download its zip from the Code tab, or git clone it, then enter the directory and run the configure script:
 
 ```console
 git clone https://github.com/aarikpokras/VLATI.git && cd VLATI && sh configure.sh
