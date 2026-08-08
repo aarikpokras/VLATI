@@ -7,3 +7,6 @@ callouts:
   note:
     title: Note
     color: blue
+  outdated:
+    title: Outdated
+    color: yellow
