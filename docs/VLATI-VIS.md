@@ -18,3 +18,15 @@ If you've added a body to VLATI, its trajectory needs to be exported to the .npz
 
 {: .important }
 VLATI-VIS draws its starting date from conf.py, so when running VLATI-VIS, make sure that the date in conf.py applies to the simulation loaded into VLATI-VIS. In other words, don't change conf.py in between running the main program and VLATI-VIS. This will be fixed in the near future.
+
+## Examples
+
+Play the trajectory from output.npz at 200x speed, from frame zero to 500000 in an Earth-centered inertial frame:
+```console
+VLATI-VIS output.npz 0 2500 200
+```
+
+Play the trajectory from output.npz at 100x speed, from frame 200000 to 500000 in a Moon-centered inertial frame:
+```console
+VLATI-VIS output.npz 2000 5000 100x -f moon
+```
