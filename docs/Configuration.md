@@ -22,8 +22,6 @@ The options available are found in the conf.py file in the root directory of thi
 |`ephemeris_file`|file path|The file in which the ephemeris is located.|
 |`leap_file`|file path|The file in which the leap second information is located.|
 
-(Yes, all the burn parameters in conf.py are required even when `bool_burn` is set to `False`.)
-
 ## Notes about config options
 
 ### `traj_output_file`
