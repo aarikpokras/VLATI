@@ -1,3 +1,7 @@
+---
+nav_order: 3
+---
+
 # Dependencies
 
 To function properly, VLATI requires some dependencies:
