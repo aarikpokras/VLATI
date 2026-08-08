@@ -1,6 +1,6 @@
 ## VLATI Documentation
-* [Adding a gravitational body](/Adding-a-gravitational-body)
-* [Configuration](/Configuration)
-* [Dependencies](/Dependencies)
-* [Installation](/Installation)
-* [VLATI-VIS](/VLATI-VIS)
+* [**Adding a gravitational body**](/VLATI/Adding-a-gravitational-body)
+* [**Configuration**](/VLATI/Configuration)
+* [**Dependencies**](/VLATI/Dependencies)
+* [**Installation**](/VLATI/Installation)
+* [**VLATI-VIS**](/VLATI/VLATI-VIS)
