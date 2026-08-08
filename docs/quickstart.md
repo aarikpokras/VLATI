@@ -1,0 +1,57 @@
+---
+nav_order: 4
+---
+
+# Quick Start
+
+{: .note }
+It's generally a good idea to take a look at the [Configuration](/VLATI/Configuration) section to familiarize yourself with the config options.
+
+After downloading VLATI, you're ready to get started. This quick start will use the example config file called `TLI-c-MCC-c-LOI.py`. It's located in the [examples](https://github.com/aarikpokras/VLATI/blob/master/examples/TLI-c-MCC-c-LOI.py) directory in the repository.
+
+The reason for the seemingly weird file name is because it describes roughly what the configuration file tells VLATI to do. First, it puts it on a trans-lunar trajectory (going towards the Moon - **T**rans-**L**unar **I**njection), then coasts for a bit, then executes a **Mid**-**C**ourse **C**orrection to align itself with the Moon's slightly inclined orbital plane, then coasts for a bit again, and executes a **L**unar **O**rbital **I**nsertion.
+
+## Breakdown
+
+First, let's go through the configuration file line by line. Here is the whole thing:
+
+```python
+import numpy as np
+
+# Performs a trans-lunar injection, coasts for a bit,
+# then executes a mid-course correction before coasting
+# for a bit more time, then performing a lunar orbital
+# insertion.
+
+### CONFIG ###
+
+conf = {
+  "utc_start_date": "2000 JAN 10 03:09:52.816",
+  "traj_output_file": "./output.npz",
+  "frames_to_simulate": 500000,
+  "seconds_timestep": 1,
+  "meters_spacecraft_start_vec": [-6537000.0, 0.0, 0.0],
+  "meters_per_second_spacecraft_start_v_vec": [0.0, 11000.2, 0.0],
+  "burn_array": ( [50000, np.array([0.0, 0.0, -211.0]), 0], [196800, np.array([0.0, -2000.0, -2000.0]), 0] ),
+
+  ### ADVANCED ###
+  "ephemeris_file": "de440.bsp",
+  "leap_file": "naif0012.tls"
+}
+
+##############
+```
+
+We'll start after the line where the config dictionary starts (the line we're talking about contains `conf = {`.)
+
+The first configuration option in the example file is the start date of the simulation, with the key `utc_start_date`. It represents the date **and time** in UTC at the start of the simulation. This date is passed directly into NAIF's SPICE software, which has an extremely robust date format detection system. As such, almost any date/time format you can think of will work with this. SPICE will throw an error if the date format is not supported.
+
+The second key is `traj_output_file`. It represents the relative path of the file to which the positions of each body and the spacecraft over time will be written after the simulation is complete. It is primarily for use with VLATI-VIS, but can be easily read with `numpy.load`.
+
+The third key is `frames_to_simulate`. It represents the amount of frames that the simulation will run, which is critically different from the amount of time that the simulation simulates; the formula for the amount of time simulated would be $\text{time simulated}=\text{frames}\times\text{timestep}$.
+
+The fourth key is the timestep (`seconds_timestep`). It represents how much time is added to the clock every iteration. The smaller this is, the more accurate the simulation is, but a smaller timestep also makes the simulation more computationally expensive and slow.
+
+The fifth key is the starting position of the spacecraft (`meters_spacecraft_start_vec`). It references the center of the Earth. As such, if this were `[0, 0, 0]`, the spacecraft would start right at the center of the Earth.
+
+The sixth key is the starting velocity vector of the spacecraft (`meters_per_second_spacecraft_start_v_vec`).
