@@ -35,6 +35,7 @@ trajs = np.load(args.trajectory_file)
 traj_sc = trajs["sc"]
 traj_moon = trajs["moon"]
 traj_sun = trajs["sun"]
+traj_earth = np.zeros_like(traj_sc)
 
 fig = plt.figure(figsize=(7, 7))
 ax = fig.add_subplot(projection='3d')
@@ -44,14 +45,21 @@ ax.set_ylim(-120000000, 120000000)
 ax.set_zlim(-120000000, 120000000)
 ax.set_aspect('equal')
 
+if (args.frame):
+  traj_sc -= trajs[args.frame]
+  traj_moon -= trajs[args.frame]
+  traj_sun -= trajs[args.frame]
+  traj_earth -= trajs[args.frame]
+
 traj_sc_line = ax.plot(traj_sc[:,0], traj_sc[:,1], traj_sc[:,2], 'm-')
 traj_moon_line = ax.plot(traj_moon[:,0], traj_moon[:,1], traj_moon[:,2], 'g-')
 traj_sun_line = ax.plot(traj_sun[:,0], traj_sun[:,1], traj_sun[:,2], 'k-')
+traj_earth_line = ax.plot(traj_earth[:,0], traj_earth[:,1], traj_earth[:,2], 'b-')
 
 sc_dot, = ax.plot([traj_sc[0][0]], [traj_sc[0][1]], [traj_sc[0][2]], 'g^')
 moon_dot, = ax.plot([traj_moon[0][0]], [traj_moon[0][1]], [traj_moon[0][2]], 'ko')
 sun_dot, = ax.plot([traj_sun[0][0]], [traj_sun[0][1]], [traj_sun[0][2]], 'yo')
-earth_dot = ax.plot([0], [0], [0], 'bo')
+earth_dot, = ax.plot([0], [0], [0], 'bo')
 
 moonfmts = "MOON     "
 earthfmts = "EARTH    "
@@ -106,10 +114,18 @@ def update(frame):
   sun_dot.set_data([traj_sun[t_][0]], [traj_sun[t_][1]])
   sun_dot.set_3d_properties([traj_sun[t_][2]])
 
-  return sc_dot, moon_dot, sun_dot
+  earth_dot.set_data([traj_earth[t_][0]], [traj_earth[t_][1]])
+  earth_dot.set_3d_properties([traj_earth[t_][2]])
+
+  return sc_dot, moon_dot, sun_dot, earth_dot
 
 anim = FuncAnimation(fig, update, frames=range(start_frame, end_frame), interval=0, blit=False, repeat=True)
 
 ax.grid(False)
+
+if (args.frame):
+  fig.canvas.manager.set_window_title(args.frame + ' Inertial View')
+else:
+  fig.canvas.manager.set_window_title('earth Inertial View')
 
 plt.show()
