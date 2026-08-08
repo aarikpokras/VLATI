@@ -1,3 +1,5 @@
+# Configuration
+
 A configuration file named conf.py is required in the same directory in which VLATI is run. It must contain a dictionary with the same name.
 ```python
 ###### conf.py ######
