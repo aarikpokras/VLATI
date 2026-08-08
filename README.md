@@ -16,6 +16,8 @@ Notable features:
 * Impulsive burns
 * Animated and quantitative visualization program
 * Real lunar and solar ephemerides
+* Multi-body gravity integration
+* Highly configurable
 
 There are plans to increase the accuracy of the ephemerides, as they are currently only sinusoidal (circular).
 
