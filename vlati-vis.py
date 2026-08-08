@@ -7,26 +7,31 @@ import sys
 from pathlib import Path
 import conf
 import spiceypy as spice
+import argparse
+
+psr = argparse.ArgumentParser()
+psr.add_argument("trajectory_file", help="The file in which the trajectories are stored", type=Path)
+psr.add_argument("start_frame", help="The frame on which to start", type=int)
+psr.add_argument("end_frame", help="The frame on which to end", type=int)
+psr.add_argument("multiplier", help="The speed of the simulation", type=int)
+psr.add_argument("-f", "--frame", help="The inertial reference origin to use")
+args = psr.parse_args()
 
 spice.kclear()
 spice.furnsh(conf.conf["leap_file"])
 
-if (len(sys.argv) != 5):
-  print("VLATI-VIS: Error: Too many or too few arguments.")
-  sys.exit(2)
-
-if (not Path(sys.argv[1]).is_file()):
-  print("VLATI-VIS: Error: trajectory file should be an existing file.")
+if (not Path(args.trajectory_file).is_file()):
+  print("VLATI-VIS C: Error: trajectory file should be an existing file.")
   sys.exit(1)
 
 START_ET = spice.str2et(conf.conf["utc_start_date"])
 
-start_frame = int(sys.argv[2])
-end_frame = int(sys.argv[3])
+start_frame = args.start_frame
+end_frame = args.end_frame
 
-MULTIPLIER = int(sys.argv[4].replace('x', ''))
+MULTIPLIER = args.multiplier
 
-trajs = np.load(sys.argv[1])
+trajs = np.load(args.trajectory_file)
 traj_sc = trajs["sc"]
 traj_moon = trajs["moon"]
 traj_sun = trajs["sun"]
