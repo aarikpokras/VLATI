@@ -47,6 +47,6 @@ The zero indicates to VLATI that the burn hasn't been performed yet. During each
 
 An example of the Δv vector:
 ```python
-np.array([1000.0, 0.0])
+np.array([1000.0, 0.0, 10.412])
 ```
 At least one of the vector components must contain a .0 (or any other decimal, to your preference) to indicate to NumPy that the vector represents a vector of floating-point numbers, not integers.
