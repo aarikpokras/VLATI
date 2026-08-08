@@ -9,5 +9,5 @@ The multiplier is applied to the index of the trajectory arrays, so it applies t
 
 The multiplier argument can be followed with an `x`, or alternatively nothing.
 
-> [!Important]
-> VLATI-VIS draws its starting date from conf.py, so when running VLATI-VIS, make sure that the date in conf.py applies to the simulation loaded into VLATI-VIS. In other words, don't change conf.py in between running the main program and VLATI-VIS. This will be fixed in the near future.
+{: .important }
+VLATI-VIS draws its starting date from conf.py, so when running VLATI-VIS, make sure that the date in conf.py applies to the simulation loaded into VLATI-VIS. In other words, don't change conf.py in between running the main program and VLATI-VIS. This will be fixed in the near future.
