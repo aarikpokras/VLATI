@@ -1,3 +1,5 @@
+# Dependencies
+
 To function properly, VLATI requires some dependencies:
 * matplotlib
 * NumPy
