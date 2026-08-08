@@ -83,4 +83,4 @@ This will start the simulation. It should start with an `In progress` readout, t
 
 When it is finished, a final readout reading `Writing trajectories to file...` will appear for a few seconds before a window opens showing a static 3D plot of the spacecraft's and bodies' paths over time. When you are ready, close this out.
 
-Congratulations! You've just run your first VLATI simulation. As a next step, you can try out [VLATI-VIS](/VLATI/VLATI-VIS)
+Congratulations! You've just run your first VLATI simulation. As a next step, you can try out [VLATI-VIS](/VLATI/VLATI-VIS).
