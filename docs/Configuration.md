@@ -16,12 +16,11 @@ The options available are found in the conf.py file in the root directory of thi
 |---|---|---|
 |`frames_to_simulate`|frames|Tells VLATI how many iterations it should simulate.|
 |`seconds_timestep`|seconds|What the Δt of the simulation is; generally, the smaller the more accurate; good to keep it ~1.|
-|`degrees_moon_start_angle_N`|degrees|Where the Moon's revolution about the Earth starts relative to absolute upwards (increases clockwise).|
 |`meters_spacecraft_start_vec`|meters|The starting location vector of the spacecraft.|
 |`meters_per_second_spacecraft_start_v_vec`|meters per second|The starting velocity vector of the spacecraft.|
 |`burn_array`|various|Read below for information regarding `burn_array`.|
 |`traj_output_file`|file path|Where to save the trajectories of the Sun, Moon, and spacecraft. Should be a file with a `.npz` extension.|
-|<h3>Advanced</h3>|
+|Advanced|
 |`ephemeris_file`|file path|The file in which the ephemeris is located.|
 |`leap_file`|file path|The file in which the leap second information is located.|
 
