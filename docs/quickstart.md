@@ -66,6 +66,8 @@ Due to the nature of Python tuples, `burn_array` must have either **zero** or **
 
 We now have the advanced options. The `ephemeris_file` and `leap_file` keys denote the relative paths of the files that contain ephemerides and leap seconds. You usually don't need to change these.
 
+Now that you know what these do, feel free to adjust them to your liking! If you lower the velocity to around 7000m/s, you will probably capture into low Earth orbit.
+
 ## Running the simulation
 
 Now that the config file is written, we need to run the simulation. First, ensure that conf.py is in the same directory as VLATI. Then, run the simulation:
