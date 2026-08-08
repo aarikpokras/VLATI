@@ -13,7 +13,7 @@ The reason for the seemingly weird file name is because it describes roughly wha
 
 ## Breakdown
 
-First, let's go through the configuration file line by line. Here is the whole thing:
+First, let's go through the configuration file (called `conf.py`) line by line. Here is the whole thing:
 
 ```python
 import numpy as np
@@ -62,3 +62,25 @@ The seventh is the burn tuple. It contains information about instantaneous Δv b
 Due to the nature of Python tuples, `burn_array` must have either **zero** or **at least two** arrays within. If there is only one, there will be an error. If you wish to execute just one burn, add the array `[0, 0, 1]` to `burn_array`. It will not execute any burn (except for the one you specify), but it will keep the error from happening.
 
 We now have the advanced options. The `ephemeris_file` and `leap_file` keys denote the relative paths of the files that contain ephemerides and leap seconds. You usually don't need to change these.
+
+## Running the simulation
+
+Now that the config file is written, we need to run the simulation. First, ensure that conf.py is in the same directory as VLATI. Then, run the simulation:
+
+Either:
+
+```console
+python3 main.py
+```
+
+or
+
+```console
+./VLATI_TRAJ
+```
+
+This will start the simulation. It should start with an `In progress` readout, then periodically (every 5% of `frames_to_simulate` iterated over) it will output another readout that contains the position vector of the spacecraft and its distance from Earth.
+
+When it is finished, a final readout reading `Writing trajectories to file...` will appear for a few seconds before a window opens showing a static 3D plot of the spacecraft's and bodies' paths over time. When you are ready, close this out.
+
+Congratulations! You've just run your first VLATI simulation. As a next step, you can try out [VLATI-VIS](/VLATI/VLATI-VIS)
