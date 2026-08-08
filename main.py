@@ -6,8 +6,18 @@ import matplotlib.pyplot as plt
 import mplcursors
 import sys
 import conf
+import spiceypy as spice
 
 burn_arr = conf.conf["burn_array"]
+
+spice.kclear()
+spice.furnsh(conf.conf["leap_file"])
+spice.furnsh(conf.conf["ephemeris_file"])
+
+START_ET_ = conf.conf["utc_start_date"]
+ET = spice.str2et(START_ET_)
+
+AXIS_REFR = "ECLIPJ2000"
 
 # How many iterations of the
 # simulator are to be run.
@@ -34,24 +44,6 @@ m_moon = 7.34767309 * (10**22)
 m_sun = 1.989 * (10**30)
 
 ##############
-
-sun_orb_r = 1.496 * (10**11)
-sun_omega = 2 * math.pi / (3.156 * (10**7))
-sun_sta = math.radians(conf.conf["degrees_sun_start_angle_N"])
-def r_sun_vec(t):
-  x = -sun_orb_r * math.cos((math.pi/2) + sun_sta + sun_omega * t)
-  y = sun_orb_r * math.sin((math.pi/2) + sun_sta + sun_omega * t)
-  z = 0
-  return np.array([x, y, z])
-
-moon_orb_r = 384398861.0
-moon_omega = 2 * math.pi / 2360000
-moon_sta = math.radians(conf.conf["degrees_moon_start_angle_N"])
-def r_moon_vec(t):
-  x = moon_orb_r * math.sin(moon_sta + moon_omega * t)
-  y = moon_orb_r * math.cos(moon_sta + moon_omega * t)
-  z = 0
-  return np.array([x, y, z])
 
 ### ARRAY OF BODIES ###
 
@@ -94,11 +86,12 @@ while _iter < until:
   ### COMPUTE NEW POS OF PLANETS ###
   _iter += 1
   t = _iter * dt
+  ET += dt
 
-  r_moon = r_moon_vec(t)
+  r_moon = spice.spkpos("MOON", ET, AXIS_REFR, "NONE", "EARTH")[0] * 1000 # returns NumPy array in km
   bds[1] = (r_moon, m_moon)
 
-  r_sun = r_sun_vec(t)
+  r_sun = spice.spkpos("SUN", ET, AXIS_REFR, "NONE", "EARTH")[0] * 1000
   bds[2] = (r_sun, m_sun)
 
   ##################################
@@ -155,8 +148,8 @@ ax.set_aspect('equal')
 # dictates the color. For more info, google "mpl
 # format strings".
 dote = ax.plot([r_earth[0]], [r_earth[1]], 'bo')
-dots = ax.plot([r_sun[0]], [r_sun[1]], 'yo')  
-dotm = ax.plot([r_moon[0]], [r_moon[1]], 'ko')
+dots = ax.scatter(r_sun[0], r_sun[1], r_sun[2], c='#ffd343', marker='o', s=40)
+dotm = ax.scatter(r_moon[0], r_moon[1], r_moon[2], c='black', marker='o')
 
 # Traj start marker
 ax.plot([traj[0][0]], [traj[0][1]], '^g')
