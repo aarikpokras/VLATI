@@ -48,10 +48,17 @@ The first configuration option in the example file is the start date of the simu
 
 The second key is `traj_output_file`. It represents the relative path of the file to which the positions of each body and the spacecraft over time will be written after the simulation is complete. It is primarily for use with VLATI-VIS, but can be easily read with `numpy.load`.
 
-The third key is `frames_to_simulate`. It represents the amount of frames that the simulation will run, which is critically different from the amount of time that the simulation simulates; the formula for the amount of time simulated would be $\text{time simulated}=\text{frames}\times\text{timestep}$.
+The third key is `frames_to_simulate`. It represents the amount of frames that the simulation will run, which is critically different from the amount of time that the simulation simulates; the formula for the amount of time simulated would be frames simulated ⨉ timestep.
 
 The fourth key is the timestep (`seconds_timestep`). It represents how much time is added to the clock every iteration. The smaller this is, the more accurate the simulation is, but a smaller timestep also makes the simulation more computationally expensive and slow.
 
 The fifth key is the starting position of the spacecraft (`meters_spacecraft_start_vec`). It references the center of the Earth. As such, if this were `[0, 0, 0]`, the spacecraft would start right at the center of the Earth.
 
 The sixth key is the starting velocity vector of the spacecraft (`meters_per_second_spacecraft_start_v_vec`).
+
+The seventh is the burn tuple. It contains information about instantaneous Δv burns. The first element of the constituent arrays denotes the elapsed time at which to execute the burn; the second is the Δv vector, and the third should just be a zero. This is an element that VLATI modifies when the burn has been executed.
+
+{: .important }
+Due to the nature of Python tuples, `burn_array` must have either **zero** or **at least two** arrays within. If there is only one, there will be an error. If you wish to execute just one burn, add the array `[0, 0, 1]` to `burn_array`. It will not execute any burn (except for the one you specify), but it will keep the error from happening.
+
+We now have the advanced options. The `ephemeris_file` and `leap_file` keys denote the relative paths of the files that contain ephemerides and leap seconds. You usually don't need to change these.
