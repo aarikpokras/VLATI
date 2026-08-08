@@ -30,6 +30,7 @@ ax.plot( [r_body[0]], [r_body[1]], [r_body[2]], '[color][shape]')
 For `shape`, you can just use o. Additionally, you can use any shape usable in Matplotlib format strings.
 
 The placeholders for color and shape can be changed based on Matplotlib format strings. A quick reference for the colors:
+
 |Color|Code|
 |---|---|
 |Blue|b|
