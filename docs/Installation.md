@@ -1,3 +1,5 @@
+# Installation
+
 To install VLATI, first install its dependencies. Then you can either download its zip from the Code tab, or git clone it, then enter the directory and run the configure script:
 
 ```console
