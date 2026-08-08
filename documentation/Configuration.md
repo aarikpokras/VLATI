@@ -18,6 +18,9 @@ The options available are found in the conf.py file in the root directory of thi
 |`meters_per_second_spacecraft_start_v_vec`|meters per second|The starting velocity vector of the spacecraft.|
 |`burn_array`|various|Read below for information regarding `burn_array`.|
 |`traj_output_file`|file path|Where to save the trajectories of the Sun, Moon, and spacecraft. Should be a file with a `.npz` extension.|
+|<h3>Advanced</h3>|
+|`ephemeris_file`|file path|The file in which the ephemeris is located.|
+|`leap_file`|file path|The file in which the leap second information is located.|
 
 (Yes, all the burn parameters in conf.py are required even when `bool_burn` is set to `False`.)
 
