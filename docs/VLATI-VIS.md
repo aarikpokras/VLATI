@@ -11,7 +11,7 @@ The multiplier is applied to the index of the trajectory arrays, so it applies t
 
 The multiplier argument can be followed with an `x`, or alternatively nothing.
 
-The `frame` argument can be used to change the inertial frame of the visualization. For example, for the Moon to be at the center of the visualization, use `-f moon`. This is case sensitive; as such, all frames must be lowercase.
+The `--frame`/`-f` argument can be used to change the inertial frame of the visualization. For example, for the Moon to be at the center of the visualization, use `-f moon`. This is case sensitive; as such, all frames must be lowercase.
 
 {: .note }
 If you've added a body to VLATI, its trajectory needs to be exported to the .npz file in order to be used in the frame argument.
