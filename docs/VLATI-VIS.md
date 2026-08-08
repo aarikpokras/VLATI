@@ -30,3 +30,8 @@ Play the trajectory from output.npz at 100x speed, from frame 200000 to 500000 i
 ```console
 VLATI-VIS output.npz 2000 5000 100x -f moon
 ```
+
+Play the trajectory from output.npz at real speed, from frame 0 to 180000 in a spacecraft-centered inertial frame:
+```console
+VLATI-VIS output.npz 0 180000 1 -f sc
+```
