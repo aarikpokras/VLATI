@@ -9,6 +9,7 @@ conf = {
 ## List of configuration options
 
 The options available are found in the conf.py file in the root directory of this repository. Every option in the file is required, and no more and no less can be used (as of now). The conf.py file in this repository is ready for use with the simulator. The following will list each of the configuration options, what they affect, and what units they use.
+
 |Variable|Unit|Purpose|
 |---|---|---|
 |`frames_to_simulate`|frames|Tells VLATI how many iterations it should simulate.|
