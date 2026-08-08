@@ -46,7 +46,7 @@ ax.set_zlim(-120000000, 120000000)
 ax.set_aspect('equal')
 
 if (args.frame):
-  traj_sc -= trajs[args.frame]
+  traj_sc -= trajs[args.frame] # Hey you! Yes you! make sure the frame exists! Should be lowercase!
   traj_moon -= trajs[args.frame]
   traj_sun -= trajs[args.frame]
   traj_earth -= trajs[args.frame]
