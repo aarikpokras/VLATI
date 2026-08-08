@@ -1,3 +1,5 @@
+# VLATI-VIS
+
 VLATI-VIS is the visualization and animation program for VLATI. It's capable of animating each body's trajectory over time, along with a certain multiplier to control animation speed.
 
 Syntax:
