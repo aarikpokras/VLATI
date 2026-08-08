@@ -1,3 +1,5 @@
+# Adding a gravitational body
+
 {: .note }
 For most normal uses of VLATI, this is not required; approximate ephemerides are already provided, and the Sun and Moon are already integrated. That being said, if you would still like to continue with this, keep reading.
 
