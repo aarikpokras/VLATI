@@ -19,6 +19,4 @@ Notable features:
 * Multi-body gravity integration
 * Highly configurable
 
-There are plans to increase the accuracy of the ephemerides, as they are currently only sinusoidal (circular).
-
 You can take a look at the documentation directory for VLATI's documentation, and the INSTALL.md file for installation instructions.
