@@ -16,9 +16,6 @@ The `--frame`/`-f` argument can be used to change the inertial frame of the visu
 {: .note }
 If you've added a body to VLATI, its trajectory needs to be exported to the .npz file in order to be used in the frame argument.
 
-{: .important }
-VLATI-VIS draws its starting date from conf.py, so when running VLATI-VIS, make sure that the date in conf.py applies to the simulation loaded into VLATI-VIS. In other words, don't change conf.py in between running the main program and VLATI-VIS. This will be fixed in the near future.
-
 ## Examples
 
 Play the trajectory from output.npz at 200x speed, from frame zero to 500000 in an Earth-centered inertial frame:
