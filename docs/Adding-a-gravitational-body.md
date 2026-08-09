@@ -1,5 +1,6 @@
 ---
 nav_order: 8
+parent: Advanced
 ---
 
 # Adding a gravitational body
