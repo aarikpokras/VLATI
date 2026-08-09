@@ -10,3 +10,6 @@ callouts:
   outdated:
     title: Outdated
     color: yellow
+  sourcefile:
+    title: Source file
+    color: green
