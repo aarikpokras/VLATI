@@ -57,7 +57,42 @@ bds = [ (r_earth, 5.972 * (10**24)), (r_moon, m_moon), (r_sun, m_sun), (r_mars, 
 
 It will now be automatically factored into the calculations.
 
+### 3. Motion
+
+VLATI uses NAIF's SPICE to get planetary positions relative to the ecliptic (the plane on which Earth orbits the Sun). You can either provide your own function, or use SPICE to get the position of the body from the ephemeris file and rewrite the body's tuple in `bds`:
+
+```python
+### COMPUTE NEW POS OF PLANETS ###
+  ...
+
+r_mars = spice.spkpos("MARS", ET, AXIS_REFR, "NONE", "EARTH")[0] * 1000
+bds[3] = (r_mars, m_mars)
+```
+
+Let's break some points of confusion down:
+* We get index 0 of the SPICE `spkpos` because it returns an object that contains `position, lighttime`, and we only want the position.
+* We multiply it by 1000 because:
+  * It gives results in kilometers, and VLATI operates in meters.
+  * It is a NumPy array, so we can do that (vector-scalar multiplication).
+
+All objects below this line are optional and are not strictly necessary for trajectory calculation.
+
 <hr />
+
+### 4. Static Matplotlib visualization
+
+We can add a little dot to the static MPL visualization after the integration is complete to show where the body is at the end of the simulation.
+
+```python
+### MPL BODY COLORS ###
+  ...
+
+dotm = ax.scatter(r_moon[0], r_moon[1], r_moon[2], c='black', marker='o')
+
+dot_mars = ax.scatter(r_mars[0], r_mars[1], r_mars[2], c='orange', marker='o')
+```
+
+This will make a little Mars dot appear at its last position in the simulation.
 
 <!--
 To add a body, add it to the `bds` tuple array. The format is as follows:
