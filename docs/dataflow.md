@@ -1,6 +1,6 @@
 ---
 nav_order: 7
-parent: ⸻ Advanced ⸻
+parent: Advanced
 ---
 
 # Data Flow
