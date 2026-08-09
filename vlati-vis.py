@@ -24,14 +24,13 @@ if (not Path(args.trajectory_file).is_file()):
   print("VLATI-VIS C: Error: trajectory file should be an existing file.")
   sys.exit(1)
 
-START_ET = spice.str2et(conf.conf["utc_start_date"])
-
 start_frame = args.start_frame
 end_frame = args.end_frame
 
 MULTIPLIER = args.multiplier
 
 trajs = np.load(args.trajectory_file)
+START_ET = trajs["set"]
 traj_sc = trajs["sc"]
 traj_moon = trajs["moon"]
 traj_sun = trajs["sun"]
