@@ -130,7 +130,7 @@ sun_traj = np.array(sun_traj)
 
 print("Writing trajectories to file...")
 
-np.savez(conf.conf["traj_output_file"], sun=sun_traj, moon=moon_traj_debug, sc=traj)
+np.savez(conf.conf["traj_output_file"], set=spice.str2et(START_ET_), sun=sun_traj, moon=moon_traj_debug, sc=traj)
 
 fig = plt.figure()
 ax = fig.add_subplot(projection='3d')
