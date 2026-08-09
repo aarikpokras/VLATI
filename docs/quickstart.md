@@ -12,7 +12,7 @@ After downloading VLATI, you're ready to get started. This quick start will use 
 {: .note }
 Remember to rename the file to `conf.py`. Otherwise VLATI will not recognize it as a configuration file.
 
-The reason for the seemingly weird file name is because it describes roughly what the configuration file tells VLATI to do. First, it puts it on a trans-lunar trajectory (going towards the Moon - **T**rans-**L**unar **I**njection), then coasts for a bit, then executes a **Mid**-**C**ourse **C**orrection to align itself with the Moon's slightly inclined orbital plane, then coasts for a bit again, and executes a **L**unar **O**rbital **I**nsertion.
+The reason for the seemingly weird file name is because it describes roughly what the configuration file tells VLATI to do. First, it puts it on a trans-lunar trajectory (going towards the Moon - **T**rans-**L**unar **I**njection), then coasts for a bit, then executes a **M**id-**C**ourse **C**orrection to align itself with the Moon's slightly inclined orbital plane, then coasts for a bit again, and executes a **L**unar **O**rbital **I**nsertion.
 
 ## Breakdown
 
