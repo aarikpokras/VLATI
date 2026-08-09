@@ -76,7 +76,7 @@ Let's break some points of confusion down:
   * It gives results in kilometers, and VLATI operates in meters.
   * It is a NumPy array, so we can do that (vector-scalar multiplication).
 
-All objects below this line are optional and are not strictly necessary for trajectory calculation.
+All items below this line are optional and are not strictly necessary for trajectory calculation.
 
 <hr />
 
