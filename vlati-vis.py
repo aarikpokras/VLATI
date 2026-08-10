@@ -31,6 +31,7 @@ MULTIPLIER = args.multiplier
 
 trajs = np.load(args.trajectory_file)
 START_ET = trajs["set"]
+DT = trajs["dt"]
 traj_sc = trajs["sc"]
 traj_moon = trajs["moon"]
 traj_sun = trajs["sun"]
@@ -95,7 +96,7 @@ ax.plot(cust_spines["+y"]["x"], cust_spines["+y"]["y"], cust_spines["+y"]["z"], 
 ax.plot(cust_spines["+x"]["x"], cust_spines["+x"]["y"], cust_spines["+x"]["z"], 'r-', linewidth=0.5)
 
 def update(frame):
-  t_ = frame * MULTIPLIER
+  t_ = frame * DT * MULTIPLIER
   et = START_ET + t_
   time_utc = spice.et2utc(et, "C", 3)
   cal_ro.set_text(time_utc)
