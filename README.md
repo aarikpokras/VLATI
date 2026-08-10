@@ -19,4 +19,4 @@ Notable features:
 * Multi-body gravity integration
 * Highly configurable
 
-You can take a look at the documentation directory for VLATI's documentation, and the INSTALL.md file for installation instructions.
+You can take a look at the [documentation](https://aarikpokras.com/VLATI) for VLATI's documentation, and the INSTALL.md file for installation instructions.
