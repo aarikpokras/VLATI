@@ -20,7 +20,7 @@ args = psr.parse_args()
 spice.kclear()
 spice.furnsh(conf.conf["leap_file"])
 
-if (not Path(args.trajectory_file).is_file()):
+if (not args.trajectory_file.is_file()):
   print("VLATI-VIS C: Error: trajectory file should be an existing file.")
   sys.exit(1)
 
@@ -124,7 +124,7 @@ anim = FuncAnimation(fig, update, frames=range(start_frame, end_frame), interval
 
 ax.grid(False)
 
-if (args.frame != 'sc'):
+if (args.frame and args.frame != 'sc'):
   fig.canvas.manager.set_window_title(args.frame.capitalize() + '-Centered Inertial View')
 elif (args.frame == 'sc'):
   fig.canvas.manager.set_window_title('Spacecraft-Centered View')
