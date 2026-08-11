@@ -96,14 +96,15 @@ ax.plot(cust_spines["+y"]["x"], cust_spines["+y"]["y"], cust_spines["+y"]["z"], 
 ax.plot(cust_spines["+x"]["x"], cust_spines["+x"]["y"], cust_spines["+x"]["z"], 'r-', linewidth=0.5)
 
 def update(frame):
-  t_ = frame * DT * MULTIPLIER
-  et = START_ET + t_
+  t_ = frame * MULTIPLIER     # INDEX
+  t = frame * DT * MULTIPLIER # ELAPSED TIME
+  et = START_ET + t
   time_utc = spice.et2utc(et, "C", 3)
   cal_ro.set_text(time_utc)
   moon_ro.set_text(f"{moonfmts}{np.linalg.norm(traj_sc[t_] - traj_moon[t_]):.11f}")
-  earth_ro.set_text(f"{earthfmts}{np.linalg.norm(traj_sc[t_] - np.array([0, 0, 0])):.11f}")
+  earth_ro.set_text(f"{earthfmts}{np.linalg.norm(traj_sc[t_] - traj_earth[t_]):.11f}")
   sun_ro.set_text(f"{sunfmts}{np.linalg.norm(traj_sc[t_] - traj_sun[t_])/1000:.11f}")
-  time_ro.set_text(f"T = {t_}")
+  time_ro.set_text(f"T = {t}")
 
   sc_dot.set_data([traj_sc[t_][0]], [traj_sc[t_][1]])
   sc_dot.set_3d_properties([traj_sc[t_][2]])
