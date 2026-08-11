@@ -124,9 +124,11 @@ anim = FuncAnimation(fig, update, frames=range(start_frame, end_frame), interval
 
 ax.grid(False)
 
-if (args.frame):
-  fig.canvas.manager.set_window_title(args.frame + ' Inertial View')
+if (args.frame != 'sc'):
+  fig.canvas.manager.set_window_title(args.frame.capitalize() + '-Centered Inertial View')
+elif (args.frame == 'sc'):
+  fig.canvas.manager.set_window_title('Spacecraft-Centered View')
 else:
-  fig.canvas.manager.set_window_title('earth Inertial View')
+  fig.canvas.manager.set_window_title('Earth-Centered Inertial View')
 
 plt.show()
