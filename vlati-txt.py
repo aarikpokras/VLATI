@@ -81,7 +81,7 @@ print(
   "-- VECS --",
   f"R VECTOR         : {fi['POS_VECT']}",
   f"- NORM (DISTANCE): {np.linalg.norm(fi['POS_VECT'])}",
-  f"V VECTOR         : {fi['VEL_VECT']}",
+  f"V VECTOR TO EARTH: {fi['VEL_VECT']}",
   f"- NORM (VELOCITY): {np.linalg.norm(fi['VEL_VECT'])}",
   "",
   "-- SCAL --",
