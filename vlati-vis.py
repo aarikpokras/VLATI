@@ -120,7 +120,7 @@ def update(frame):
 
   return sc_dot, moon_dot, sun_dot, earth_dot
 
-anim = FuncAnimation(fig, update, frames=range(start_frame, end_frame), interval=0, blit=False, repeat=True)
+anim = FuncAnimation(fig, update, frames=range(start_frame//MULTIPLIER, end_frame//MULTIPLIER), interval=0, blit=False, repeat=True)
 
 ax.grid(False)
 
