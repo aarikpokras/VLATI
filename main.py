@@ -77,6 +77,8 @@ a = acceleration_vec(r_sc) # Pre-compute accel vector
 moon_traj_debug = []
 sun_traj = []
 
+vel_vecs = []
+
 t = 0
 
 while _iter < until:
@@ -122,6 +124,8 @@ while _iter < until:
   moon_traj_debug.append(r_moon.copy())
   sun_traj.append(r_sun.copy())
 
+  vel_vecs.append(v.copy())
+
   a = a_new
 
 traj = np.array(traj)
@@ -130,7 +134,7 @@ sun_traj = np.array(sun_traj)
 
 print("Writing trajectories to file...")
 
-np.savez(conf.conf["traj_output_file"], set=spice.str2et(START_ET_), sun=sun_traj, moon=moon_traj_debug, sc=traj)
+np.savez(conf.conf["traj_output_file"], set=spice.str2et(START_ET_), sun=sun_traj, moon=moon_traj_debug, sc=traj, v=vel_vecs, dt=dt)
 
 fig = plt.figure()
 ax = fig.add_subplot(projection='3d')

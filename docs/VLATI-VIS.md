@@ -1,3 +1,7 @@
+---
+parent: Secondary programs
+---
+
 # VLATI-VIS
 
 VLATI-VIS is the visualization and animation program for VLATI. It's capable of animating each body's trajectory over time, using different origins, and speeding up the simulation with a certain multiplier.

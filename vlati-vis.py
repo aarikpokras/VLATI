@@ -20,7 +20,7 @@ args = psr.parse_args()
 spice.kclear()
 spice.furnsh(conf.conf["leap_file"])
 
-if (not Path(args.trajectory_file).is_file()):
+if (not args.trajectory_file.is_file()):
   print("VLATI-VIS C: Error: trajectory file should be an existing file.")
   sys.exit(1)
 
@@ -31,6 +31,7 @@ MULTIPLIER = args.multiplier
 
 trajs = np.load(args.trajectory_file)
 START_ET = trajs["set"]
+DT = trajs["dt"]
 traj_sc = trajs["sc"]
 traj_moon = trajs["moon"]
 traj_sun = trajs["sun"]
@@ -95,14 +96,15 @@ ax.plot(cust_spines["+y"]["x"], cust_spines["+y"]["y"], cust_spines["+y"]["z"], 
 ax.plot(cust_spines["+x"]["x"], cust_spines["+x"]["y"], cust_spines["+x"]["z"], 'r-', linewidth=0.5)
 
 def update(frame):
-  t_ = frame * MULTIPLIER
-  et = START_ET + t_
+  t_ = frame * MULTIPLIER     # INDEX
+  t = frame * DT * MULTIPLIER # ELAPSED TIME
+  et = START_ET + t
   time_utc = spice.et2utc(et, "C", 3)
   cal_ro.set_text(time_utc)
   moon_ro.set_text(f"{moonfmts}{np.linalg.norm(traj_sc[t_] - traj_moon[t_]):.11f}")
-  earth_ro.set_text(f"{earthfmts}{np.linalg.norm(traj_sc[t_] - np.array([0, 0, 0])):.11f}")
+  earth_ro.set_text(f"{earthfmts}{np.linalg.norm(traj_sc[t_] - traj_earth[t_]):.11f}")
   sun_ro.set_text(f"{sunfmts}{np.linalg.norm(traj_sc[t_] - traj_sun[t_])/1000:.11f}")
-  time_ro.set_text(f"T = {t_}")
+  time_ro.set_text(f"T = {t}")
 
   sc_dot.set_data([traj_sc[t_][0]], [traj_sc[t_][1]])
   sc_dot.set_3d_properties([traj_sc[t_][2]])
@@ -118,13 +120,15 @@ def update(frame):
 
   return sc_dot, moon_dot, sun_dot, earth_dot
 
-anim = FuncAnimation(fig, update, frames=range(start_frame, end_frame), interval=0, blit=False, repeat=True)
+anim = FuncAnimation(fig, update, frames=range(start_frame, end_frame), interval=1, blit=False, repeat=True)
 
 ax.grid(False)
 
-if (args.frame):
-  fig.canvas.manager.set_window_title(args.frame + ' Inertial View')
+if (args.frame and args.frame != 'sc'):
+  fig.canvas.manager.set_window_title(args.frame.capitalize() + '-Centered Inertial View')
+elif (args.frame == 'sc'):
+  fig.canvas.manager.set_window_title('Spacecraft-Centered View')
 else:
-  fig.canvas.manager.set_window_title('earth Inertial View')
+  fig.canvas.manager.set_window_title('Earth-Centered Inertial View')
 
 plt.show()
