@@ -22,6 +22,9 @@ VLATI-TXT [-h] [-f FRAME] [-s SHOW [SHOW ...]] trajectory_file velocity_file fra
 |`-f/--frame`|Optional|The coordinate origin|
 |`-s/--show`|Optional|Specific sections to show in the output|
 
+{: .note }
+If you input invalid variables into --show, the program will still run, displaying any valid variables you passed.
+
 ## Examples
 
 Display all available information about frame 2501:
@@ -37,6 +40,11 @@ VLATI-TXT output.npz output.pv 491551 -s vecs
 Display all available information about frame 2661 relative to the moon:
 ```console
 VLATI-TXT output.npz output.pv 491551 -f moon
+```
+
+Display time and position/velocity information relative to the moon in frame 6000:
+```console
+VLATI-TXT output.npz output.pv 6000 -f moon -s time vecs
 ```
 
 {: .important }
