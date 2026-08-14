@@ -9,12 +9,35 @@ VLATI-TXT is VLATI's textual analysis program. It displays useful information ab
 Syntax:
 
 ```console
-VLATI-TXT [-h] [-f FRAME] trajectory_file frame_iq
+VLATI-TXT [-h] [-f FRAME] [-s SHOW [SHOW ...]] trajectory_file velocity_file frame_iq
 ```
 
-The reference frames work similarly to how they do in [VLATI-VIS](/VLATI/VLATI-VIS); as does the trajectory file argument.
+## Command-Line Arguments
 
-Use the frame_iq argument to choose the simulation frame to pass to VLATI-TXT.
+|Argument||Purpose|
+|--|--|--|
+|`trajectory_file`|Required|What file VLATI-TXT draws planetary and spacecraft positions from over time|
+|`velocity_file`|Required|What file VLATI-TXT draws planetary and spacecraft velocities from over time|
+|`frame_iq`|Required|The simulation frame to analyze|
+|`-f/--frame`|Optional|The coordinate origin|
+|`-s/--show`|Optional|Specific sections to show in the output|
+
+## Examples
+
+Display all available information about frame 2501:
+```console
+VLATI-TXT output.npz output.pv 2501
+```
+
+Display velocity and position information from frame 491551:
+```console
+VLATI-TXT output.npz output.pv 491551 -s vecs
+```
+
+Display all available information about frame 2661 relative to the moon:
+```console
+VLATI-TXT output.npz output.pv 491551 -f moon
+```
 
 {: .important }
 VLATI-TXT needs to convert between ephemeris time and UTC. To do this, it needs a leap seconds file (naif0012.tls for this). It draws this file from conf.py.
