@@ -23,7 +23,7 @@ VLATI-TXT [-h] [-f FRAME] [-s SHOW [SHOW ...]] trajectory_file velocity_file fra
 |`-s/--show`|Optional|Specific sections to show in the output|
 
 {: .note }
-If you input invalid variables into --show, the program will still run, displaying any valid variables you passed.
+If you input invalid variables into `--show`, the program will still run, displaying any valid variables you passed.
 
 ## Examples
 
