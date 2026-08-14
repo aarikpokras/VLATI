@@ -3,12 +3,13 @@
 import numpy as np
 import math
 import matplotlib.pyplot as plt
-import mplcursors
-import sys
 import conf
 import spiceypy as spice
+from pathlib import Path
 
 burn_arr = conf.conf["burn_array"]
+
+print("SPICE Init")
 
 spice.kclear()
 spice.furnsh(conf.conf["leap_file"])
@@ -27,6 +28,8 @@ AXIS_REFR = "ECLIPJ2000"
 until = conf.conf["frames_to_simulate"]
 
 G = 6.6743 * (10**-11) # m^3 kg^-1 s^-2
+
+print("NumPy Init")
 
 ### R VECS ###
 
@@ -77,7 +80,8 @@ a = acceleration_vec(r_sc) # Pre-compute accel vector
 moon_traj_debug = []
 sun_traj = []
 
-vel_vecs = []
+sc_vel_vecs = []
+body_vel_vecs = dict(sun=[], moon=[])
 
 t = 0
 
@@ -90,11 +94,15 @@ while _iter < until:
   t = _iter * dt
   ET += dt
 
-  r_moon = spice.spkpos("MOON", ET, AXIS_REFR, "NONE", "EARTH")[0] * 1000 # returns NumPy array in km
+  x_moon = spice.spkezr("MOON", ET, AXIS_REFR, "NONE", "EARTH")[0] * 1000 # returns NumPy array in km[/s], so we * 1000 for m
+  r_moon = x_moon[:3]
   bds[1] = (r_moon, m_moon)
+  body_vel_vecs['moon'].append(x_moon[3:])
 
-  r_sun = spice.spkpos("SUN", ET, AXIS_REFR, "NONE", "EARTH")[0] * 1000
+  x_sun = spice.spkezr("SUN", ET, AXIS_REFR, "NONE", "EARTH")[0] * 1000
+  r_sun = x_sun[:3]
   bds[2] = (r_sun, m_sun)
+  body_vel_vecs['sun'].append(x_sun[3:])
 
   ##################################
 
@@ -124,7 +132,7 @@ while _iter < until:
   moon_traj_debug.append(r_moon.copy())
   sun_traj.append(r_sun.copy())
 
-  vel_vecs.append(v.copy())
+  sc_vel_vecs.append(v.copy())
 
   a = a_new
 
@@ -134,7 +142,10 @@ sun_traj = np.array(sun_traj)
 
 print("Writing trajectories to file...")
 
-np.savez(conf.conf["traj_output_file"], set=spice.str2et(START_ET_), sun=sun_traj, moon=moon_traj_debug, sc=traj, v=vel_vecs, dt=dt)
+np.savez(conf.conf["traj_output_file"], set=spice.str2et(START_ET_), sun=sun_traj, moon=moon_traj_debug, sc=traj, v=sc_vel_vecs, dt=dt)
+
+with open(Path(conf.conf["traj_output_file"]).with_suffix('.pv'), 'wb') as npzf:
+  np.savez(npzf, **body_vel_vecs)
 
 fig = plt.figure()
 ax = fig.add_subplot(projection='3d')
