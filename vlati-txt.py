@@ -18,11 +18,11 @@ psr.add_argument("-s", "--show", help="Simulation sections to show (time, vecs, 
 args = psr.parse_args()
 
 if (not args.trajectory_file.is_file()):
-  print("VLATI-TXT C: Error: trajectory file should be an existing file.")
+  print("VLATI-TXT C: Error: Trajectory file should be an existing file.")
   sys.exit(1)
 
 if (not args.velocity_file.is_file()):
-  print("VLATI-TXT C: Error: velocity file should be an existing file.")
+  print("VLATI-TXT C: Error: Velocity file should be an existing file.")
   sys.exit(1)
 
 def hat(vect):
@@ -114,4 +114,7 @@ if (args.show == 'all'):
     all_dict[index]()
 else:
   for show_item in args.show:
-    all_dict[show_item]()
+    try:
+      all_dict[show_item]()
+    except KeyError:
+      print(f"VLATI-TXT L: Error: Key {show_item} does not exist.\n")
