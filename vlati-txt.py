@@ -11,9 +11,10 @@ spice.furnsh(conf.conf["leap_file"])
 
 psr = argparse.ArgumentParser()
 psr.add_argument("trajectory_file", help="The file in which the trajectories are stored", type=Path)
-psr.add_argument("velocity_file", help="The .pv file that contains the velocities of the bodies.", type=Path)
+psr.add_argument("velocity_file", help="The .pv file that contains the velocities of the bodies", type=Path)
 psr.add_argument("frame_iq", help="The frame to analyze", type=int)
 psr.add_argument("-f", "--frame", help="The inertial reference origin to use")
+psr.add_argument("-s", "--show", help="Simulation sections to show (time, vecs, etc.)", nargs="+", default="all")
 args = psr.parse_args()
 
 if (not args.trajectory_file.is_file()):
@@ -86,20 +87,31 @@ np.set_printoptions(precision=5, suppress=True)
 if (abs(fi["RAD_VELO"]) < 15):
   print('Apsis likely at this point\n')
 
-print(
-  "-- TIME --",
-  f"SECS ELAP        : {SECS_ELAP}",
-  f"EPHEMERIS TIME   : {EPHM_TIME}",
-  f"UTC TIME         : {fi['UTC_TIME']}",
-  f"DT               : {dt}",
-  "",
-  "-- VECS --",
-  f"R VECTOR         : {fi['POS_VECT']}",
-  f"- NORM (DISTANCE): {np.linalg.norm(fi['POS_VECT'])}",
-  f"V VECTOR         : {fi['VEL_VECT']}",
-  f"- NORM (VELOCITY): {np.linalg.norm(fi['VEL_VECT'])}",
-  "",
-  "-- SCAL --",
-  f"RAD VEL (v * ^r) : {fi['RAD_VELO']}",
-  sep="\n"
-)
+all_dict = {
+  "time": lambda: print(
+    "-- TIME --",
+    f"SECS ELAP        : {SECS_ELAP}",
+    f"EPHEMERIS TIME   : {EPHM_TIME}",
+    f"UTC TIME         : {fi['UTC_TIME']}",
+    f"DT               : {dt}",
+    "", sep="\n"),
+  "vecs": lambda: print(
+    "-- VECS --",
+    f"R VECTOR         : {fi['POS_VECT']}",
+    f"- NORM (DISTANCE): {np.linalg.norm(fi['POS_VECT'])}",
+    f"V VECTOR         : {fi['VEL_VECT']}",
+    f"- NORM (VELOCITY): {np.linalg.norm(fi['VEL_VECT'])}",
+    "", sep="\n"),
+  "scal": lambda: print(
+    "-- SCAL --",
+    f"RAD VEL (v * ^r) : {fi['RAD_VELO']}",
+    "",
+    sep="\n")
+}
+
+if (args.show == 'all'):
+  for index in all_dict:
+    all_dict[index]()
+else:
+  for show_item in args.show:
+    all_dict[show_item]()
