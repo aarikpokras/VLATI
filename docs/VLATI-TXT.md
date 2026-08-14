@@ -18,6 +18,3 @@ Use the frame_iq argument to choose the simulation frame to pass to VLATI-TXT.
 
 {: .important }
 VLATI-TXT needs to convert between ephemeris time and UTC. To do this, it needs a leap seconds file (naif0012.tls for this). It draws this file from conf.py.
-
-{: .important }
-The radial velocity that VLATI-TXT provides is meaningless if the reference frame is not of the Earth; it uses spacecraft velocity relative to the earth, dot-producted with the spacecraft's position vector relative to the chosen reference frame.
