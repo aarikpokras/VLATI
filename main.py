@@ -162,7 +162,7 @@ ax.set_aspect('equal')
 # the shape of the point, and the first character
 # dictates the color. For more info, google "mpl
 # format strings".
-dote = ax.plot([r_earth[0]], [r_earth[1]], 'bo')
+dote = ax.scatter(r_earth[0], r_earth[1], r_earth[2], c='blue', marker='o')
 dots = ax.scatter(r_sun[0], r_sun[1], r_sun[2], c='#ffd343', marker='o', s=40)
 dotm = ax.scatter(r_moon[0], r_moon[1], r_moon[2], c='black', marker='o')
 
